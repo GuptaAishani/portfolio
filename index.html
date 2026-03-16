@@ -182,94 +182,9 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;align-ite
 @keyframes exhaust{0%,100%{transform:scaleY(1) scaleX(1);opacity:.9}50%{transform:scaleY(1.14) scaleX(.9);opacity:.72}}
 #rex{animation:exhaust .5s ease-in-out infinite;transform-origin:50% 0}
 
-/* ── LANDING ANIMATION ── */
-@keyframes rocketFlyIn {
-  0%   { transform: translate(300px, -500px) rotate(100deg) scale(0.5); opacity: 0; }
-  10%  { opacity: 1; }
-  40%  { transform: translate(140px, -150px) rotate(55deg) scale(0.75); }
-  62%  { transform: translate(40px, 60px) rotate(15deg) scale(0.92); }
-  78%  { transform: translate(6px, 18px) rotate(2deg) scale(1.0); }
-  88%  { transform: translate(0px, 6px) rotate(0deg) scale(1.0); }
-  94%  { transform: translate(0px, -3px) rotate(0deg) scale(1.0); }
-  100% { transform: translate(0px, 0px) rotate(0deg) scale(1.0); }
-}
-
-@keyframes retroBurnFlare {
-  0%,52%,100% { opacity:0; transform: scaleY(1) scaleX(1); }
-  58%  { opacity:1; transform: scaleY(2.6) scaleX(1.7); }
-  72%  { opacity:1; transform: scaleY(2.0) scaleX(1.4); }
-  84%  { opacity:.5; transform: scaleY(1.3) scaleX(1.1); }
-  92%  { opacity:0; }
-}
-
-@keyframes dustPuff {
-  0%   { opacity:0; transform: scale(0.1); }
-  20%  { opacity:.8; }
-  50%  { opacity:.4; transform: scale(1.6) translateY(-10px); }
-  100% { opacity:0; transform: scale(2.8) translateY(-28px); }
-}
-
-@keyframes legDeploy {
-  0%,78% { opacity:0; }
-  82%    { opacity:1; transform: scaleX(1.08); }
-  91%    { transform: scaleX(0.96); }
-  100%   { opacity:1; transform: scaleX(1); }
-}
-
-@keyframes touchdown {
-  0%,100%{ transform:translate(0,0) }
-  25%    { transform:translate(-4px,5px) }
-  50%    { transform:translate(4px,-4px) }
-  75%    { transform:translate(-2px,2px) }
-}
-
-/* rocket-all wraps the svg — overflow visible so it can fly in from outside */
-#rocket-svg-wrap { overflow: visible; }
-#rocket-all {
-  animation: rocketFlyIn 2.6s cubic-bezier(0.25,0.46,0.45,0.94) 0.5s both;
-  transform-origin: center center;
-  will-change: transform;
-}
-
-#rocket-col.landing { animation: touchdown 0.3s ease; }
-
-/* retro burn */
-#retro-burn {
-  position:absolute;
-  bottom:20px; left:50%;
-  transform: translateX(-50%);
-  width:56px; height:90px;
-  pointer-events:none;
-  animation: retroBurnFlare 2.6s ease 0.5s both;
-  transform-origin: center top;
-}
-
-/* dust */
-#dust-left,#dust-right {
-  position:absolute; bottom:10px;
-  width:64px; height:44px;
-  border-radius:50%;
-  background:radial-gradient(ellipse,rgba(200,25,43,.4) 0%,transparent 70%);
-  pointer-events:none; opacity:0;
-  animation: dustPuff 1s ease 3.1s forwards;
-}
-#dust-left  { left:20px;  transform-origin:right center; }
-#dust-right { right:20px; transform-origin:left center; }
-
-/* legs */
-#leg-left,#leg-right {
-  position:absolute; bottom:8px;
-  width:38px; height:14px;
-  border-bottom:2px solid rgba(200,25,43,.75);
-  opacity:0;
-  animation: legDeploy 0.5s ease 2.7s forwards;
-}
-#leg-left  { left:62px;  border-left:  2px solid rgba(200,25,43,.75); border-radius:0 0 0 4px; transform-origin:right center; }
-#leg-right { right:62px; border-right: 2px solid rgba(200,25,43,.75); border-radius:0 0 4px 0; transform-origin:left center; }
-
 /* exhaust */
 @keyframes exhaust{0%,100%{transform:scaleY(1) scaleX(1);opacity:.9}50%{transform:scaleY(1.14) scaleX(.9);opacity:.72}}
-#rex { animation: exhaust .5s ease-in-out 3.5s infinite; opacity:0; }
+#rex{animation:exhaust .5s ease-in-out infinite;transform-origin:50% 0}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:960px){
@@ -580,7 +495,6 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;align-ite
 <div id="rocket-col">
   <div id="spb"><div id="spf"></div></div>
   <div id="rocket-svg-wrap">
-    <div id="rocket-all">
     <svg viewBox="0 0 280 760" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="bG" x1="0" y1="0" x2="1" y2="0">
@@ -744,27 +658,6 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;align-ite
       </g><!-- /translate wrapper -->
 
     </svg>
-    </div><!-- /rocket-all -->
-
-    <!-- Landing effects -->
-    <div id="retro-burn">
-      <svg viewBox="0 0 52 80" xmlns="http://www.w3.org/2000/svg" width="52" height="80">
-        <defs>
-          <radialGradient id="rbG" cx="50%" cy="0%" r="100%">
-            <stop offset="0%"  stop-color="#fff" stop-opacity=".95"/>
-            <stop offset="20%" stop-color="#ffdd44" stop-opacity=".9"/>
-            <stop offset="55%" stop-color="#e84020" stop-opacity=".7"/>
-            <stop offset="100%" stop-color="#c81020" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <ellipse cx="26" cy="8" rx="18" ry="72" fill="url(#rbG)"/>
-        <ellipse cx="26" cy="6" rx="8"  ry="32" fill="#fff" opacity=".4"/>
-      </svg>
-    </div>
-    <div id="leg-left"></div>
-    <div id="leg-right"></div>
-    <div id="dust-left"></div>
-    <div id="dust-right"></div>
   </div>
 </div>
 
@@ -812,22 +705,6 @@ document.querySelectorAll('.skill-bar').forEach(b=>sbo.observe(b));
 const nso=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{threshold:.3});
 document.querySelectorAll('section[id]').forEach(s=>nso.observe(s));
 
-// ─── LANDING SEQUENCE ─────────────────────────────────────
-let landingDone = false;
-const rocketCol = document.getElementById('rocket-col');
-
-// Screen shake at touchdown (0.5s delay + 88% of 2.6s ≈ 2.8s total)
-setTimeout(() => {
-  rocketCol.classList.add('landing');
-  setTimeout(() => rocketCol.classList.remove('landing'), 350);
-}, 2800);
-
-// Enable scroll separation after landing settles
-setTimeout(() => {
-  landingDone = true;
-  onScroll();
-}, 3600);
-
 
 const nose=document.getElementById('gNose');
 const s2=document.getElementById('gS2');
@@ -849,7 +726,6 @@ function lerp(a,b,t){return a+(b-a)*Math.max(0,Math.min(1,t))}
 function easeOut(t){return 1-Math.pow(1-Math.max(0,Math.min(1,t)),3)}
 
 function onScroll(){
-  if (!landingDone) return;
   const p=window.scrollY/Math.max(1,document.body.scrollHeight-window.innerHeight);
   spf.style.height=(p*100)+'%';
 
