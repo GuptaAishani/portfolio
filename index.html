@@ -5,154 +5,191 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aishani Gupta — Aerospace Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root {
-  --bg:#04080f;--bg2:#070e1a;--bg3:#0b1526;
-  --line:rgba(255,255,255,0.07);
-  --c1:#00c8f0;--c2:#ff5c28;--c3:#c8ff5c;
-  --dim:#3a5068;--body:#8aa4bc;--white:#e8f2fa;
+:root{
+  --bg:#0a0305;
+  --bg2:#110508;
+  --bg3:#190a0d;
+  --bg4:#1f0d10;
+  --line:rgba(180,40,55,0.14);
+  --line2:rgba(180,40,55,0.25);
+  --c1:#c8192b;       /* primary maroon-red */
+  --c2:#e8432a;       /* orange-red accent */
+  --c3:#ff9966;       /* warm highlight */
+  --c4:#8b0000;       /* deep maroon */
+  --dim:#6b3038;
+  --body:#c4a0a6;
+  --white:#f5e8ea;
   --mono:'IBM Plex Mono',monospace;
   --sans:'IBM Plex Sans',sans-serif;
   --display:'Orbitron',sans-serif;
-  --rocket-w:240px;
+  --rcol:320px;       /* rocket column width */
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:15px;line-height:1.7;overflow-x:hidden}
-#stars{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55}
-/* LAYOUT */
-#layout{display:flex;position:relative;z-index:1;min-height:100vh}
-#content-col{flex:1;min-width:0;padding-right:calc(var(--rocket-w) + 20px)}
-#rocket-col{width:var(--rocket-w);position:fixed;right:0;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;pointer-events:none}
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;padding:0 48px;background:rgba(4,8,15,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);justify-content:space-between}
-.nav-logo{font-family:var(--display);font-size:12px;font-weight:900;letter-spacing:3px;color:var(--white)}
+
+/* ─── STARS ─── */
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
+
+/* ─── LAYOUT ─── */
+#layout{display:flex;position:relative;z-index:1}
+#content-col{flex:1;min-width:0;padding-right:calc(var(--rcol) + 16px)}
+#rocket-col{width:var(--rcol);position:fixed;right:0;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;pointer-events:none;background:linear-gradient(to left,rgba(10,3,5,.7) 0%,transparent 100%)}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:58px;display:flex;align-items:center;padding:0 48px;background:rgba(10,3,5,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--line2);justify-content:space-between}
+.nav-logo{font-family:var(--display);font-size:11px;font-weight:900;letter-spacing:3px;color:var(--white)}
 .nav-logo em{color:var(--c1);font-style:normal}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .2s}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--c1)}
-/* SECTIONS */
-section{padding:120px 48px 80px;border-bottom:1px solid var(--line);position:relative}
-section#hero{padding:0 48px;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:56px}
-.sec-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:5px;color:var(--c1);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+
+/* ─── SECTION BASE ─── */
+section{padding:110px 48px 80px;border-bottom:1px solid var(--line);position:relative}
+section#hero{padding:0 48px;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:58px}
+.sec-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:5px;color:var(--c1);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:12px}
 .sec-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--c1)}
-h1,h2,h3{font-family:var(--display);color:var(--white);line-height:1.1}
-h1{font-size:clamp(40px,7vw,88px);font-weight:900;letter-spacing:-2px}
-h1 span{color:var(--c1)}
-h2{font-size:clamp(22px,3vw,36px);font-weight:600;margin-bottom:40px}
-h3{font-size:15px;font-weight:600;margin-bottom:10px}
+h2{font-family:var(--display);font-size:clamp(20px,3vw,34px);font-weight:600;color:var(--white);line-height:1.1;margin-bottom:40px}
+h3{font-family:var(--display);font-size:14px;font-weight:600;color:var(--white);margin-bottom:10px}
 p{max-width:60ch}
-/* HERO */
-.hero-role{font-family:var(--mono);font-size:11px;letter-spacing:5px;color:var(--dim);text-transform:uppercase;margin:18px 0 28px}
-.hero-desc{font-size:16px;line-height:1.9;color:var(--body);max-width:55ch;margin-bottom:44px}
+
+/* ─── HERO ─── */
+.hero-name{font-family:var(--display);font-size:clamp(44px,8vw,100px);font-weight:900;color:var(--white);line-height:.92;letter-spacing:-2px;display:block;margin-bottom:6px}
+.hero-name span{color:var(--c1)}
+.hero-role{font-family:var(--mono);font-size:10px;letter-spacing:5px;color:var(--dim);text-transform:uppercase;margin:20px 0 28px}
+.hero-desc{font-size:16px;line-height:1.95;color:var(--body);max-width:52ch;margin-bottom:40px}
 .hero-stats{display:flex;gap:44px;flex-wrap:wrap;margin-bottom:44px}
-.stat{display:flex;flex-direction:column}
-.stat-num{font-family:var(--display);font-size:30px;font-weight:900;color:var(--white);line-height:1;margin-bottom:4px}
-.stat-num span{color:var(--c1);font-size:18px}
-.stat-label{font-family:var(--mono);font-size:9px;letter-spacing:4px;color:var(--dim);text-transform:uppercase}
+.stat-num{font-family:var(--display);font-size:28px;font-weight:900;color:var(--white);line-height:1;margin-bottom:4px}
+.stat-num span{color:var(--c1);font-size:16px}
+.stat-label{font-family:var(--mono);font-size:8px;letter-spacing:4px;color:var(--dim);text-transform:uppercase}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-.btn{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:13px 28px;cursor:pointer;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s}
-.btn-primary{background:var(--c1);color:var(--bg);font-weight:600}
-.btn-primary:hover{background:#fff;transform:translateY(-2px)}
-.btn-ghost{background:none;color:var(--c1);border:1px solid rgba(0,200,240,.3)}
-.btn-ghost:hover{border-color:var(--c1);background:rgba(0,200,240,.05)}
-.scroll-indicator{position:absolute;bottom:32px;left:48px;display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:9px;letter-spacing:4px;color:var(--dim);text-transform:uppercase}
-.scroll-line{width:40px;height:1px;background:var(--dim);position:relative;overflow:hidden}
+.btn{font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:13px 28px;cursor:pointer;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s}
+.btn-primary{background:var(--c1);color:#fff;font-weight:600}
+.btn-primary:hover{background:var(--c2);transform:translateY(-2px)}
+.btn-ghost{background:none;color:var(--c1);border:1px solid rgba(200,25,43,.35)}
+.btn-ghost:hover{border-color:var(--c1);background:rgba(200,25,43,.07)}
+.scroll-indicator{position:absolute;bottom:28px;left:48px;display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:8px;letter-spacing:4px;color:var(--dim);text-transform:uppercase}
+.scroll-line{width:36px;height:1px;background:var(--dim);position:relative;overflow:hidden}
 .scroll-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--c1);animation:scan 2s ease infinite}
 @keyframes scan{to{left:100%}}
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+
+/* ─── ABOUT ─── */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:start}
 .about-bio{font-size:14px;line-height:2.1;color:var(--body)}
-.about-bio p+p{margin-top:18px}
-.edu-list{display:flex;flex-direction:column;gap:20px}
-.edu-item{padding:18px 22px;border:1px solid var(--line);border-left:3px solid var(--c1);background:rgba(0,200,240,.02)}
-.edu-degree{font-family:var(--display);font-size:12px;font-weight:600;color:var(--white);margin-bottom:4px}
+.about-bio p+p{margin-top:16px}
+.about-bio strong{color:var(--c3);font-weight:500}
+.edu-list{display:flex;flex-direction:column;gap:16px}
+.edu-item{padding:16px 20px;border:1px solid var(--line);border-left:3px solid var(--c1);background:rgba(200,25,43,.03)}
+.edu-degree{font-family:var(--display);font-size:11px;font-weight:600;color:var(--white);margin-bottom:4px}
 .edu-school{font-family:var(--mono);font-size:10px;color:var(--c1);letter-spacing:2px;margin-bottom:3px}
 .edu-year{font-family:var(--mono);font-size:9px;color:var(--dim)}
-/* PROJECTS */
+
+/* lunar passion callout */
+.lunar-callout{margin-top:28px;padding:20px 24px;border:1px solid rgba(200,25,43,.3);background:linear-gradient(135deg,rgba(200,25,43,.06),rgba(232,67,42,.04));position:relative;overflow:hidden}
+.lunar-callout::before{content:'◐';position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:48px;opacity:.07;color:var(--c3)}
+.lunar-callout-title{font-family:var(--mono);font-size:8px;letter-spacing:4px;color:var(--c3);text-transform:uppercase;margin-bottom:8px}
+.lunar-callout p{font-size:12px;line-height:1.8;color:var(--body);max-width:none}
+
+/* ─── INTERNSHIP / EXPERIENCE ─── */
+.exp-list{display:flex;flex-direction:column}
+.exp-item{display:grid;grid-template-columns:160px 1fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--line)}
+.exp-meta{}
+.exp-period{font-family:var(--mono);font-size:9px;letter-spacing:3px;color:var(--dim);margin-bottom:6px}
+.exp-company{font-family:var(--display);font-size:9px;font-weight:600;color:var(--c1);letter-spacing:2px;margin-bottom:4px}
+.exp-location{font-family:var(--mono);font-size:8px;color:var(--dim);letter-spacing:1px}
+.exp-role{font-family:var(--display);font-size:14px;font-weight:600;color:var(--white);margin-bottom:12px;line-height:1.3}
+.exp-bullets{list-style:none}
+.exp-bullets li{font-size:12.5px;color:var(--body);line-height:1.9;padding-left:14px;position:relative;margin-bottom:3px}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--c1);font-size:9px;top:5px}
+
+/* ─── PROJECTS ─── */
 .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);border:1px solid var(--line)}
-.proj-card{background:var(--bg);padding:32px;cursor:pointer;transition:background .25s;position:relative;overflow:hidden}
+.proj-card{background:var(--bg);padding:28px;cursor:pointer;transition:background .25s;position:relative;overflow:hidden}
 .proj-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--c1);transition:height .3s}
 .proj-card:hover{background:var(--bg3)}
 .proj-card:hover::before{height:100%}
-.proj-num{font-family:var(--mono);font-size:9px;letter-spacing:4px;color:var(--dim);margin-bottom:14px}
-.proj-title{font-family:var(--display);font-size:13px;font-weight:600;color:var(--white);margin-bottom:10px;line-height:1.35}
-.proj-desc{font-size:12px;line-height:1.85;color:var(--body);margin-bottom:18px}
+.proj-num{font-family:var(--mono);font-size:8px;letter-spacing:4px;color:var(--dim);margin-bottom:12px}
+.proj-title{font-family:var(--display);font-size:12px;font-weight:600;color:var(--white);margin-bottom:10px;line-height:1.35}
+.proj-desc{font-size:12px;line-height:1.85;color:var(--body);margin-bottom:16px}
 .proj-tags{display:flex;flex-wrap:wrap;gap:5px}
-.tag{font-family:var(--mono);font-size:8px;letter-spacing:2px;padding:4px 8px;border:1px solid var(--line);color:var(--dim);text-transform:uppercase}
-.tag-c{border-color:rgba(0,200,240,.3);color:var(--c1)}
-.tag-o{border-color:rgba(255,92,40,.3);color:var(--c2)}
-.proj-meta{display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-family:var(--mono);font-size:9px;color:var(--dim)}
-.proj-arrow{color:var(--c1);font-size:16px;transition:transform .2s}
+.tag{font-family:var(--mono);font-size:8px;letter-spacing:1px;padding:3px 8px;border:1px solid var(--line);color:var(--dim);text-transform:uppercase}
+.tag-r{border-color:rgba(200,25,43,.35);color:var(--c1)}
+.tag-o{border-color:rgba(232,67,42,.35);color:var(--c2)}
+.proj-meta{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:9px;color:var(--dim)}
+.proj-arrow{color:var(--c1);font-size:15px;transition:transform .2s}
 .proj-card:hover .proj-arrow{transform:translateX(4px)}
-/* EXPERIENCE */
-.exp-list{display:flex;flex-direction:column;gap:0}
-.exp-item{display:grid;grid-template-columns:140px 1fr;gap:36px;padding:34px 0;border-bottom:1px solid var(--line)}
-.exp-period{font-family:var(--mono);font-size:10px;letter-spacing:3px;color:var(--dim);margin-bottom:6px}
-.exp-company{font-family:var(--display);font-size:10px;font-weight:600;color:var(--c1);letter-spacing:2px}
-.exp-role{font-family:var(--display);font-size:15px;font-weight:600;color:var(--white);margin-bottom:12px}
-.exp-bullets{list-style:none}
-.exp-bullets li{font-size:13px;color:var(--body);line-height:1.85;padding-left:14px;position:relative;margin-bottom:3px}
-.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--c1);font-size:9px;top:5px}
-/* SKILLS */
+
+/* ─── SKILLS ─── */
 .skills-container{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-.skill-cat-title{font-family:var(--mono);font-size:9px;letter-spacing:4px;color:var(--c1);text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--line)}
-.skill-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.03)}
+.skill-cat-title{font-family:var(--mono);font-size:8px;letter-spacing:4px;color:var(--c1);text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.skill-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(180,40,55,.05)}
 .skill-name{font-size:12px;color:var(--body)}
-.skill-bar-wrap{width:110px;height:2px;background:rgba(255,255,255,.08)}
+.skill-bar-wrap{width:100px;height:2px;background:rgba(255,255,255,.07)}
 .skill-bar{height:100%;background:var(--c1);transition:width 1.1s ease;width:0}
 .skill-bar.o{background:var(--c2)}
 .skill-bar.g{background:var(--c3)}
-.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:6px}
-.tool-chip{font-family:var(--mono);font-size:9px;letter-spacing:1px;color:var(--dim);padding:7px 10px;border:1px solid var(--line);text-align:center;transition:border-color .2s,color .2s}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px}
+.tool-chip{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--dim);padding:7px 8px;border:1px solid var(--line);text-align:center;transition:border-color .2s,color .2s}
 .tool-chip:hover{border-color:var(--c1);color:var(--c1)}
-/* PUBLICATIONS */
-.pub-list{display:flex;flex-direction:column}
-.pub-item{padding:26px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:56px 1fr auto;gap:20px;align-items:start}
-.pub-year{font-family:var(--mono);font-size:11px;color:var(--dim);padding-top:2px}
-.pub-title{font-size:13px;color:var(--white);line-height:1.5;margin-bottom:5px}
-.pub-venue{font-family:var(--mono);font-size:9px;color:var(--c1);letter-spacing:2px}
-.pub-badge{font-family:var(--mono);font-size:8px;letter-spacing:2px;padding:4px 8px;background:rgba(0,200,240,.08);color:var(--c1);border:1px solid rgba(0,200,240,.2);white-space:nowrap;align-self:center}
-.pub-badge.conf{background:rgba(255,92,40,.08);color:var(--c2);border-color:rgba(255,92,40,.2)}
-/* CONTACT */
-#contact{min-height:60vh;display:flex;flex-direction:column;justify-content:center}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.contact-tagline{font-family:var(--display);font-size:clamp(26px,4vw,44px);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:20px}
+
+/* ─── COURSEWORK ─── */
+.course-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.course-block{padding:18px 20px;border:1px solid var(--line);background:var(--bg2)}
+.course-block-title{font-family:var(--mono);font-size:8px;letter-spacing:3px;color:var(--c1);text-transform:uppercase;margin-bottom:10px}
+.course-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.course-list li{font-size:11px;color:var(--body);padding-left:12px;position:relative}
+.course-list li::before{content:'—';position:absolute;left:0;color:var(--dim);font-size:9px}
+
+/* ─── CONTACT ─── */
+#contact{min-height:55vh;display:flex;flex-direction:column;justify-content:center}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.contact-tagline{font-family:var(--display);font-size:clamp(24px,3.5vw,42px);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:20px}
 .contact-tagline span{color:var(--c1)}
-.contact-links{display:flex;flex-direction:column;gap:12px;margin-top:32px}
-.contact-link{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:10px;letter-spacing:3px;color:var(--body);text-decoration:none;padding:14px 18px;border:1px solid var(--line);transition:border-color .2s,color .2s,background .2s}
-.contact-link:hover{border-color:var(--c1);color:var(--c1);background:rgba(0,200,240,.04)}
-.contact-link-icon{color:var(--c1);font-size:13px;min-width:18px}
-.contact-form{display:flex;flex-direction:column;gap:14px}
-.form-group{display:flex;flex-direction:column;gap:7px}
-.form-label{font-family:var(--mono);font-size:9px;letter-spacing:4px;color:var(--dim);text-transform:uppercase}
+.contact-links{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+.contact-link{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--body);text-decoration:none;padding:13px 16px;border:1px solid var(--line);transition:border-color .2s,color .2s,background .2s}
+.contact-link:hover{border-color:var(--c1);color:var(--c1);background:rgba(200,25,43,.04)}
+.contact-link-icon{color:var(--c1);font-size:12px;min-width:16px}
+.contact-form{display:flex;flex-direction:column;gap:13px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-label{font-family:var(--mono);font-size:8px;letter-spacing:4px;color:var(--dim);text-transform:uppercase}
 .form-input,.form-textarea{background:var(--bg2);border:1px solid var(--line);color:var(--white);font-family:var(--sans);font-size:13px;padding:11px 14px;outline:none;transition:border-color .2s;resize:none}
-.form-input:focus,.form-textarea:focus{border-color:rgba(0,200,240,.4)}
-.form-textarea{height:110px}
-footer{padding:28px 48px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:2px}
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.form-input:focus,.form-textarea:focus{border-color:rgba(200,25,43,.45)}
+.form-textarea{height:100px}
+
+/* ─── FOOTER ─── */
+footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:2px}
+
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in-view{opacity:1;transform:translateY(0)}
-/* ROCKET COLUMN */
-#rocket-svg-wrap{position:relative;width:200px;height:560px}
+
+/* ════════════════════════════════
+   ROCKET COLUMN
+════════════════════════════════ */
+#rocket-svg-wrap{position:relative;width:280px;height:680px}
 #rocket-svg-wrap svg{position:absolute;top:0;left:0;width:100%;height:100%}
-.r-nose,.r-upper,.r-inter,.r-lower,.r-fins{transition:transform .08s linear}
+.r-nose,.r-upper,.r-inter,.r-lower,.r-fins{transition:transform .07s linear}
 .r-callout{opacity:0;transition:opacity .35s}
 .r-callout.show{opacity:1}
-#spb{position:absolute;left:4px;top:16px;bottom:16px;width:2px;background:rgba(255,255,255,.06)}
-#spf{width:100%;height:0%;background:var(--c1);transition:height .12s linear;box-shadow:0 0 6px var(--c1)}
-@keyframes exhaust{0%,100%{transform:scaleY(1) scaleX(1);opacity:.9}50%{transform:scaleY(1.12) scaleX(.91);opacity:.75}}
-#rex{animation:exhaust .55s ease-in-out infinite;transform-origin:50% 0}
-/* RESPONSIVE */
-@media(max-width:900px){
-  :root{--rocket-w:0px}
+
+/* progress bar */
+#spb{position:absolute;left:6px;top:20px;bottom:20px;width:2px;background:rgba(180,40,55,.12)}
+#spf{width:100%;height:0%;background:var(--c1);transition:height .1s linear;box-shadow:0 0 8px rgba(200,25,43,.6)}
+
+/* exhaust */
+@keyframes exhaust{0%,100%{transform:scaleY(1) scaleX(1);opacity:.9}50%{transform:scaleY(1.14) scaleX(.9);opacity:.72}}
+#rex{animation:exhaust .5s ease-in-out infinite;transform-origin:50% 0}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:960px){
+  :root{--rcol:0px}
   #rocket-col{display:none}
   #content-col{padding-right:0}
-  .about-grid,.contact-grid,.skills-container{grid-template-columns:1fr;gap:36px}
+  .about-grid,.contact-grid,.skills-container,.course-grid{grid-template-columns:1fr;gap:32px}
   .proj-grid{grid-template-columns:1fr}
   .exp-item{grid-template-columns:1fr;gap:6px}
-  .pub-item{grid-template-columns:1fr}
   nav{padding:0 20px}
   section{padding:80px 24px 60px}
   section#hero{padding:80px 24px 80px}
@@ -162,14 +199,15 @@ footer{padding:28px 48px;border-top:1px solid var(--line);display:flex;align-ite
 </head>
 <body>
 <canvas id="stars"></canvas>
+
 <nav>
-  <div class="nav-logo">A<em>.</em>MERCER</div>
+  <div class="nav-logo">A<em>.</em>GUPTA</div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#publications">Publications</a></li>
+    <li><a href="#coursework">Coursework</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -177,396 +215,490 @@ footer{padding:28px 48px;border-top:1px solid var(--line);display:flex;align-ite
 <div id="layout">
 <div id="content-col">
 
-<!-- HERO -->
+<!-- ══ HERO ══ -->
 <section id="hero">
-  <div class="sec-eyebrow">MSc Aerospace Engineering · PhD Candidate</div>
-  <h1>ALEX<br><span>MERCER</span></h1>
-  <div class="hero-role">Propulsion · Structures · GNC · Systems Engineering</div>
-  <p class="hero-desc">Designing the systems that escape gravity. Specialising in liquid rocket propulsion, structural dynamics, and guidance &amp; control for orbital-class launch vehicles and satellite missions.</p>
+  <div class="sec-eyebrow">UT Austin · Aerospace Engineering · Class of 2027</div>
+  <span class="hero-name">AISHANI<br><span>GUPTA</span></span>
+  <div class="hero-role">Structures · CAD · Integration · Lunar Systems</div>
+  <p class="hero-desc">Junior aerospace engineer at UT Austin driven by one mission: making humanity a multi-planetary species with permanent lunar residency. From cleanroom spacecraft assembly at Firefly Aerospace to designing orbital habitat systems — I build the hardware that gets us there.</p>
   <div class="hero-stats">
-    <div class="stat"><span class="stat-num">7<span>yr</span></span><span class="stat-label">Experience</span></div>
-    <div class="stat"><span class="stat-num">14</span><span class="stat-label">Projects</span></div>
-    <div class="stat"><span class="stat-num">11</span><span class="stat-label">Publications</span></div>
-    <div class="stat"><span class="stat-num">3</span><span class="stat-label">Missions</span></div>
+    <div class="stat"><div class="stat-num">3.80</div><div class="stat-label">GPA</div></div>
+    <div class="stat"><div class="stat-num">3<span>+</span></div><div class="stat-label">Teams</div></div>
+    <div class="stat"><div class="stat-num">1<span>yr</span></div><div class="stat-label">Industry Exp.</div></div>
+    <div class="stat"><div class="stat-num">26<span>k</span></div><div class="stat-label">Residents Designed For</div></div>
   </div>
   <div class="hero-cta">
-    <a href="#projects" class="btn btn-primary">View Projects →</a>
+    <a href="#experience" class="btn btn-primary">View Experience →</a>
     <a href="#contact" class="btn btn-ghost">Get In Touch</a>
   </div>
   <div class="scroll-indicator"><div class="scroll-line"></div>Scroll to separate stages</div>
 </section>
 
-<!-- ABOUT -->
+<!-- ══ ABOUT ══ -->
 <section id="about">
   <div class="sec-eyebrow reveal">About</div>
   <h2 class="reveal">Background &amp; Education</h2>
   <div class="about-grid">
     <div class="about-bio reveal">
-      <p>I'm an aerospace engineer focused on the intersection of propulsion system design and flight mechanics. My work spans early-stage conceptual design through test campaign execution, with particular depth in liquid bipropellant engine development and structural analysis of launch vehicle components.</p>
-      <p>Currently pursuing a PhD at MIT AeroAstro investigating turbulent combustion instabilities in LOX/methane engines, with experimental work conducted at the MIT Gas Turbine Laboratory and in collaboration with the SpaceX Raptor team.</p>
-      <p>Previously I contributed to trajectory analysis and GNC development for a 3U CubeSat constellation at NASA JPL, and supported structural qualification of a commercial small launch vehicle's first-stage thrust frame at Rocket Lab.</p>
+      <p>I'm a junior at the University of Texas at Austin studying Aerospace Engineering with a <strong>Materials Science minor</strong>. My core engineering interests sit at the intersection of <strong>structural analysis, CAD design, and systems integration</strong> — the work of making complex hardware actually come together and fly.</p>
+      <p>Currently I'm assembling spacecraft at <strong>Firefly Aerospace</strong> under NASA's CLPS program — soldering harnesses, integrating avionics panels, and supporting vibration qualification testing in a cleanroom environment. Simultaneously, I lead the Space Systems Integration team at Texas Space Society, designing modular orbital and lunar habitat architectures.</p>
+      <p>My long-term mission is <strong>permanent lunar residency</strong>. I believe the structural and integration challenges of building habitats that can sustain tens of thousands of people on the Moon are the most important engineering problems of our generation, and I intend to spend my career solving them.</p>
+      <div class="lunar-callout">
+        <div class="lunar-callout-title">◐ Lunar Residency Advocacy</div>
+        <p>Currently leading a 12-member team designing structural window and hull layering for orbital and lunar habitats — developing modular layouts with rotational artificial gravity for settlements supporting up to 26,720 residents. Delivered as a 30-page NASA-style engineering proposal.</p>
+      </div>
     </div>
     <div class="reveal">
       <div class="edu-list">
         <div class="edu-item">
-          <div class="edu-degree">PhD, Aerospace Engineering</div>
-          <div class="edu-school">MIT · AeroAstro</div>
-          <div class="edu-year">2022 — Present · Combustion Instability</div>
+          <div class="edu-degree">BS, Aerospace Engineering</div>
+          <div class="edu-school">University of Texas at Austin</div>
+          <div class="edu-year">Expected May 2027 · GPA 3.80 · Materials Science Minor</div>
         </div>
-        <div class="edu-item" style="border-left-color:var(--c3)">
-          <div class="edu-degree">MSc, Aerospace Engineering</div>
-          <div class="edu-school">Caltech</div>
-          <div class="edu-year">2020 — 2022 · GPA 4.0/4.0</div>
-        </div>
-        <div class="edu-item" style="border-left-color:var(--c2)">
-          <div class="edu-degree">BEng (Hons), Mechanical &amp; Aerospace</div>
-          <div class="edu-school">University of Surrey</div>
-          <div class="edu-year">2016 — 2020 · First Class Honours</div>
+      </div>
+      <div style="margin-top:20px;padding:16px 20px;border:1px solid var(--line);background:var(--bg2)">
+        <div style="font-family:var(--mono);font-size:8px;letter-spacing:3px;color:var(--c1);text-transform:uppercase;margin-bottom:10px">Dallas, TX | Austin, TX | U.S. Citizen</div>
+        <div style="font-size:12px;color:var(--body);line-height:1.9">
+          AishaniGupta@utexas.edu<br>
+          (469) 924-0748
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="sec-eyebrow reveal">Selected Projects</div>
-  <h2 class="reveal">Engineering Work</h2>
-  <div class="proj-grid reveal">
-    <div class="proj-card">
-      <div class="proj-num">01 / PROPULSION</div>
-      <div class="proj-title">LOX/Methane Engine Combustion Stability Analysis</div>
-      <div class="proj-desc">Experimental and numerical investigation of high-frequency combustion instabilities in a 50kN LOX/CH₄ thrust chamber. Identified acoustic-heat release coupling using dynamic pressure transducers and OH* chemiluminescence imaging.</div>
-      <div class="proj-tags"><span class="tag tag-c">CFD</span><span class="tag tag-c">Combustion</span><span class="tag tag-o">PhD Research</span><span class="tag">ANSYS Fluent</span></div>
-      <div class="proj-meta"><span>MIT GTL · 2023–Present</span><span class="proj-arrow">→</span></div>
-    </div>
-    <div class="proj-card">
-      <div class="proj-num">02 / STRUCTURES</div>
-      <div class="proj-title">First-Stage Thrust Frame FEA &amp; Qualification</div>
-      <div class="proj-desc">Finite element analysis of a composite overwrap thrust frame for a small launch vehicle. Defined load cases from flight environments, executed structural test program, correlated FE model to strain gauge data within 4% error.</div>
-      <div class="proj-tags"><span class="tag tag-c">FEA</span><span class="tag">CFRP</span><span class="tag">Nastran</span><span class="tag tag-o">Rocket Lab</span></div>
-      <div class="proj-meta"><span>Rocket Lab · 2022</span><span class="proj-arrow">→</span></div>
-    </div>
-    <div class="proj-card">
-      <div class="proj-num">03 / GNC</div>
-      <div class="proj-title">CubeSat Constellation GNC &amp; Trajectory Design</div>
-      <div class="proj-desc">GNC architecture for a 3U CubeSat constellation in 550km SSO. Designed extended Kalman filter for GPS/IMU fusion and implemented quaternion-feedback pointing and B-dot detumbling algorithms.</div>
-      <div class="proj-tags"><span class="tag tag-c">EKF</span><span class="tag tag-c">ADCS</span><span class="tag">MATLAB/Simulink</span><span class="tag tag-o">NASA JPL</span></div>
-      <div class="proj-meta"><span>NASA JPL · 2021</span><span class="proj-arrow">→</span></div>
-    </div>
-    <div class="proj-card">
-      <div class="proj-num">04 / AERODYNAMICS</div>
-      <div class="proj-title">Transonic Nozzle Contour Optimisation</div>
-      <div class="proj-desc">Multi-objective optimisation of rocket nozzle contours minimising separation risk and maximising vacuum Isp. Coupled adjoint CFD with gradient-based optimiser achieving 2.3% Isp improvement over baseline.</div>
-      <div class="proj-tags"><span class="tag tag-c">Nozzle Design</span><span class="tag">OpenFOAM</span><span class="tag">Adjoint CFD</span></div>
-      <div class="proj-meta"><span>Caltech · 2022</span><span class="proj-arrow">→</span></div>
-    </div>
-    <div class="proj-card">
-      <div class="proj-num">05 / SYSTEMS</div>
-      <div class="proj-title">Launch Vehicle Mission Architecture Trade Study</div>
-      <div class="proj-desc">End-to-end architecture study for a smallsat rideshare LV targeting 250–500kg to SSO. Assessed propellant selection, staging strategy, fairing sizing, and trajectory optimisation using parametric mass models and GMAT simulation.</div>
-      <div class="proj-tags"><span class="tag tag-c">MBSE</span><span class="tag">GMAT</span><span class="tag">Trade Study</span></div>
-      <div class="proj-meta"><span>MIT · 2023</span><span class="proj-arrow">→</span></div>
-    </div>
-    <div class="proj-card">
-      <div class="proj-num">06 / PROPULSION</div>
-      <div class="proj-title">Turbopump Inducer Design &amp; Cold-Flow Testing</div>
-      <div class="proj-desc">Preliminary design of an LOX inducer via meanline analysis and 3D CFD. Fabricated titanium prototype by 5-axis CNC and validated in water cold-flow rig at 3,000 RPM.</div>
-      <div class="proj-tags"><span class="tag tag-c">Turbomachinery</span><span class="tag">CFD</span><span class="tag tag-o">Hardware</span></div>
-      <div class="proj-meta"><span>MIT · 2023</span><span class="proj-arrow">→</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
+<!-- ══ EXPERIENCE ══ -->
 <section id="experience">
-  <div class="sec-eyebrow reveal">Work History</div>
+  <div class="sec-eyebrow reveal">Industry &amp; Engineering</div>
   <h2 class="reveal">Experience</h2>
   <div class="exp-list">
+
     <div class="exp-item reveal">
-      <div><div class="exp-period">2022 — PRESENT</div><div class="exp-company">MIT AEROASTRO</div></div>
+      <div class="exp-meta">
+        <div class="exp-period">AUG 2025 — PRESENT</div>
+        <div class="exp-company">FIREFLY AEROSPACE</div>
+        <div class="exp-location">Leander, TX · NASA CLPS</div>
+      </div>
       <div>
-        <div class="exp-role">PhD Researcher — Propulsion Lab</div>
+        <div class="exp-role">Spacecraft Manufacturing &amp; Integration Intern</div>
         <ul class="exp-bullets">
-          <li>Leading experimental investigation of LOX/CH₄ combustion instability funded by DARPA and AFRL</li>
-          <li>Designed and commissioned a subscale thrust chamber with optical access and 32-channel dynamic pressure instrumentation</li>
-          <li>Developed reduced-order model of thermoacoustic coupling validated against experimental data</li>
-          <li>Teaching assistant for 16.512 Rocket Propulsion (200+ students)</li>
+          <li>Assemble spacecraft harnesses and avionics panels (soldering, crimping, connector integration) in cleanroom FOD-controlled environments</li>
+          <li>Evaluate manufacturing constraints — valve sensitivity, weld quality, aerospace bonding materials — to support design-for-manufacturability improvements, reducing integration risk across subsystem builds</li>
+          <li>Support vibration and shock qualification testing in the Environmental Test Lab to validate spacecraft hardware survivability during launch loads</li>
+          <li>Improve mission operations and manufacturing documentation in Confluence, enhancing traceability of configuration and mass properties across evolving spacecraft builds</li>
+          <li>Assist technicians with subsystem integration during agile sprint cycles, resolving assembly issues under schedule pressure</li>
         </ul>
       </div>
     </div>
+
     <div class="exp-item reveal">
-      <div><div class="exp-period">2022</div><div class="exp-company">ROCKET LAB</div></div>
+      <div class="exp-meta">
+        <div class="exp-period">SEP 2025 — PRESENT</div>
+        <div class="exp-company">TEXAS DESIGN BUILD FLY</div>
+        <div class="exp-location">UT Austin</div>
+      </div>
       <div>
-        <div class="exp-role">Structures Engineer (Contract)</div>
+        <div class="exp-role">Systems &amp; Manufacturing Engineer</div>
         <ul class="exp-bullets">
-          <li>Conducted FEA of composite thrust frame under launch acoustic, vibration, and thermal loads</li>
-          <li>Defined and executed structural test program: static proof, fatigue, and modal testing</li>
-          <li>Correlated FE model to test data with &lt;5% error on critical load paths</li>
+          <li>Design and CAD-model payload retention mechanism within a 4.5 in × 4.5 in fuselage cross-section, achieving ~95% spatial utilisation while avoiding structural and avionics interference</li>
+          <li>Perform carbon fiber and fiberglass layups using vacuum bagging and aerospace epoxy systems, optimising ply orientation for structural loads</li>
+          <li>Analyze mass distribution and payload placement effects on CG, ensuring stability margins across all mission configurations and flight envelopes</li>
+          <li>Conduct fit, alignment, and structural verification with full flight testing to validate tolerance compliance and payload stability under dynamic loading</li>
         </ul>
       </div>
     </div>
+
     <div class="exp-item reveal">
-      <div><div class="exp-period">2021</div><div class="exp-company">NASA JPL</div></div>
+      <div class="exp-meta">
+        <div class="exp-period">AUG 2024 — PRESENT</div>
+        <div class="exp-company">TEXAS AERIAL ROBOTICS</div>
+        <div class="exp-location">UT Austin</div>
+      </div>
       <div>
-        <div class="exp-role">GNC Engineer (Summer)</div>
+        <div class="exp-role">UAV Manufacturing &amp; Integration Engineer</div>
         <ul class="exp-bullets">
-          <li>Developed EKF-based navigation filter for a CubeSat constellation in 550km SSO</li>
-          <li>Implemented and tested ADCS algorithms (detumbling, pointing, formation holding) in HIL testbed</li>
-          <li>Contributed to trajectory analysis for rideshare deployment sequencing</li>
+          <li>Design and assemble quadcopter airframes in Fusion 360, optimising structural geometry and manufacturability while reducing component mass ~15% to improve flight efficiency and payload capacity</li>
+          <li>Produce ESC controller mounting bracket with 10mm clearance tolerances, enabling secure installation within the aircraft electronics stack</li>
         </ul>
       </div>
     </div>
+
     <div class="exp-item reveal">
-      <div><div class="exp-period">2020 — 2021</div><div class="exp-company">AIRBUS DS</div></div>
+      <div class="exp-meta">
+        <div class="exp-period">AUG 2024 — PRESENT</div>
+        <div class="exp-company">TEXAS SPACE SOCIETY</div>
+        <div class="exp-location">UT Austin</div>
+      </div>
       <div>
-        <div class="exp-role">Graduate Systems Engineer</div>
+        <div class="exp-role">Space Systems Integration Lead</div>
         <ul class="exp-bullets">
-          <li>Supported requirements management and V&amp;V planning for Eutelsat satellite bus</li>
-          <li>Ran FMEA and fault tree analysis for power subsystem under EN9100</li>
-          <li>Produced technical documentation and interface control drawings for launch adapter</li>
+          <li>Lead 12-member multidisciplinary team designing structural window and hull layering concepts for orbital and lunar habitats, evaluating composite material systems, structural performance, manufacturability, and cost trade-offs</li>
+          <li>Develop modular habitat layouts in CAD integrating load paths, infrastructure connectivity, and rotational artificial gravity for scalable settlements supporting up to 26,720 residents</li>
+          <li>Coordinate structures, materials, and manufacturing teams to converge on integrated habitat designs — contributed to a 30-page NASA-style engineering proposal in a 3-month cycle</li>
         </ul>
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- ══ PROJECTS ══ -->
+<section id="projects">
+  <div class="sec-eyebrow reveal">Engineering Work</div>
+  <h2 class="reveal">Featured Projects</h2>
+  <div class="proj-grid reveal">
+
+    <div class="proj-card">
+      <div class="proj-num">01 / HABITAT DESIGN</div>
+      <div class="proj-title">Modular Lunar Habitat Architecture</div>
+      <div class="proj-desc">Led structural design of pressurised hull and window layering for a permanent lunar settlement. Developed modular CAD layouts with rotational artificial gravity, integrated load paths, and infrastructure for 26,720 residents. Delivered as a 30-page NASA-style proposal.</div>
+      <div class="proj-tags"><span class="tag tag-r">CAD</span><span class="tag tag-r">Structures</span><span class="tag tag-o">Lunar Systems</span><span class="tag">Composites</span></div>
+      <div class="proj-meta"><span>Texas Space Society · 2024–Present</span><span class="proj-arrow">→</span></div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-num">02 / SPACECRAFT INT.</div>
+      <div class="proj-title">NASA CLPS Spacecraft Assembly</div>
+      <div class="proj-desc">Hands-on harness assembly, avionics panel integration, and vibration/shock qualification testing for Firefly's lunar payload spacecraft. Worked under cleanroom FOD protocols and supported design-for-manufacturability improvements across subsystem builds.</div>
+      <div class="proj-tags"><span class="tag tag-r">Avionics</span><span class="tag tag-r">Integration</span><span class="tag tag-o">Firefly</span><span class="tag">Cleanroom</span></div>
+      <div class="proj-meta"><span>Firefly Aerospace · 2025</span><span class="proj-arrow">→</span></div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-num">03 / COMPOSITES</div>
+      <div class="proj-title">UAV Composite Fuselage &amp; Payload System</div>
+      <div class="proj-desc">Designed payload retention mechanism in Siemens NX within a 4.5 in × 4.5 in cross-section achieving ~95% space utilisation. Performed CF/fiberglass layups with vacuum bagging and verified CG stability across all flight configurations.</div>
+      <div class="proj-tags"><span class="tag tag-r">SolidWorks</span><span class="tag tag-r">Layup</span><span class="tag">Vacuum Bag</span><span class="tag">CG Analysis</span></div>
+      <div class="proj-meta"><span>TX Design Build Fly · 2025</span><span class="proj-arrow">→</span></div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-num">04 / UAV DESIGN</div>
+      <div class="proj-title">Quadcopter Airframe Design &amp; Optimisation</div>
+      <div class="proj-desc">Designed and assembled quadcopter airframes in Fusion 360, optimising structural geometry and manufacturability. Reduced component mass ~15%, improving flight efficiency and payload capacity. Produced ESC mounting brackets with 10mm clearance tolerances.</div>
+      <div class="proj-tags"><span class="tag tag-r">Fusion 360</span><span class="tag tag-r">Structural</span><span class="tag">Mass Opt.</span><span class="tag tag-o">Hardware</span></div>
+      <div class="proj-meta"><span>Texas Aerial Robotics · 2024</span><span class="proj-arrow">→</span></div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-num">05 / MATERIALS</div>
+      <div class="proj-title">Composite Materials &amp; Bonding Study</div>
+      <div class="proj-desc">Hands-on exploration of aerospace-grade composite systems: carbon fiber and fiberglass layup, vacuum bagging, epoxy resin systems, and aerospace bonding and potting materials. Applied across both UAV and spacecraft hardware contexts.</div>
+      <div class="proj-tags"><span class="tag tag-r">CFRP</span><span class="tag tag-r">Epoxy</span><span class="tag">Materials Lab</span></div>
+      <div class="proj-meta"><span>UT Austin · 2024–Present</span><span class="proj-arrow">→</span></div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-num">06 / SYSTEMS</div>
+      <div class="proj-title">Spacecraft Manufacturing Documentation</div>
+      <div class="proj-desc">Improved mission operations and manufacturing documentation in Confluence and Epsilon3 to enhance configuration traceability and mass property management. Developed documentation practices supporting ISO and FOD control protocols across evolving spacecraft builds.</div>
+      <div class="proj-tags"><span class="tag tag-r">Confluence</span><span class="tag tag-r">Epsilon3</span><span class="tag">ISO</span><span class="tag tag-o">Config Control</span></div>
+      <div class="proj-meta"><span>Firefly Aerospace · 2025</span><span class="proj-arrow">→</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ SKILLS ══ -->
 <section id="skills">
   <div class="sec-eyebrow reveal">Technical Skills</div>
   <h2 class="reveal">Capabilities</h2>
   <div class="skills-container reveal">
     <div>
-      <div class="skill-cat-title" style="margin-bottom:12px">Propulsion &amp; Thermofluids</div>
-      <div style="margin-bottom:32px">
-        <div class="skill-row"><span class="skill-name">Combustion Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="92"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Engine System Modelling</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="80"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Nozzle Aerodynamics</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="85"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Turbopump Design</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="74"></div></div></div>
+      <div class="skill-cat-title" style="margin-bottom:12px">CAD &amp; Design</div>
+      <div style="margin-bottom:28px">
+        <div class="skill-row"><span class="skill-name">Siemens NX</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="88"></div></div></div>
+        <div class="skill-row"><span class="skill-name">SolidWorks</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="85"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Fusion 360</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="80"></div></div></div>
       </div>
-      <div class="skill-cat-title" style="margin-bottom:12px">Structures &amp; Dynamics</div>
-      <div>
-        <div class="skill-row"><span class="skill-name">FEA (Linear/Nonlinear)</span><div class="skill-bar-wrap"><div class="skill-bar o" data-w="88"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Composite Laminates</span><div class="skill-bar-wrap"><div class="skill-bar o" data-w="76"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Fatigue &amp; Fracture</span><div class="skill-bar-wrap"><div class="skill-bar o" data-w="70"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Vibro-acoustics</span><div class="skill-bar-wrap"><div class="skill-bar o" data-w="62"></div></div></div>
+      <div class="skill-cat-title" style="margin-bottom:12px">Manufacturing &amp; Assembly</div>
+      <div style="margin-bottom:28px">
+        <div class="skill-row"><span class="skill-name">Carbon Fiber Layup</span><div class="skill-bar-wrap"><div class="skill-bar o" data-w="84"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Avionics Harness Assembly</span><div class="skill-bar-wrap"><div class="skill-bar o" data-w="82"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Cleanroom / FOD Control</span><div class="skill-bar-wrap"><div class="skill-bar o" data-w="78"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Vacuum Bagging</span><div class="skill-bar-wrap"><div class="skill-bar o" data-w="76"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Aerospace Bonding &amp; Potting</span><div class="skill-bar-wrap"><div class="skill-bar o" data-w="74"></div></div></div>
       </div>
     </div>
     <div>
-      <div class="skill-cat-title" style="margin-bottom:12px">GNC &amp; Avionics</div>
-      <div style="margin-bottom:32px">
-        <div class="skill-row"><span class="skill-name">Trajectory Optimisation</span><div class="skill-bar-wrap"><div class="skill-bar g" data-w="83"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Sensor Fusion / EKF</span><div class="skill-bar-wrap"><div class="skill-bar g" data-w="77"></div></div></div>
-        <div class="skill-row"><span class="skill-name">ADCS Design</span><div class="skill-bar-wrap"><div class="skill-bar g" data-w="72"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Control Law Design</span><div class="skill-bar-wrap"><div class="skill-bar g" data-w="66"></div></div></div>
+      <div class="skill-cat-title" style="margin-bottom:12px">Analysis &amp; Programming</div>
+      <div style="margin-bottom:28px">
+        <div class="skill-row"><span class="skill-name">MATLAB / Simulink</span><div class="skill-bar-wrap"><div class="skill-bar g" data-w="80"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar g" data-w="74"></div></div></div>
+        <div class="skill-row"><span class="skill-name">C++</span><div class="skill-bar-wrap"><div class="skill-bar g" data-w="64"></div></div></div>
+        <div class="skill-row"><span class="skill-name">TRICK / JEOD</span><div class="skill-bar-wrap"><div class="skill-bar g" data-w="60"></div></div></div>
       </div>
-      <div class="skill-cat-title" style="margin-bottom:12px">Software &amp; Tools</div>
+      <div class="skill-cat-title" style="margin-bottom:12px">Tools &amp; Operations</div>
       <div class="tools-grid">
-        <div class="tool-chip">MATLAB</div><div class="tool-chip">Python</div><div class="tool-chip">C / C++</div>
-        <div class="tool-chip">ANSYS</div><div class="tool-chip">Nastran</div><div class="tool-chip">OpenFOAM</div>
-        <div class="tool-chip">GMAT</div><div class="tool-chip">Simulink</div><div class="tool-chip">CATIA</div>
-        <div class="tool-chip">Git</div><div class="tool-chip">LaTeX</div><div class="tool-chip">STK</div>
+        <div class="tool-chip">Git</div>
+        <div class="tool-chip">Confluence</div>
+        <div class="tool-chip">Epsilon3</div>
+        <div class="tool-chip">Odoo</div>
+        <div class="tool-chip">MS Office</div>
+        <div class="tool-chip">ISO Protocols</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PUBLICATIONS -->
-<section id="publications">
-  <div class="sec-eyebrow reveal">Research Output</div>
-  <h2 class="reveal">Publications</h2>
-  <div class="pub-list reveal">
-    <div class="pub-item">
-      <div class="pub-year">2024</div>
-      <div><div class="pub-title">Thermoacoustic Coupling Mechanisms in a LOX/Methane Thrust Chamber at 100–200 bar Chamber Pressure</div><div class="pub-venue">Journal of Propulsion &amp; Power · Vol. 40, No. 3</div></div>
-      <div class="pub-badge">Journal</div>
+<!-- ══ COURSEWORK ══ -->
+<section id="coursework">
+  <div class="sec-eyebrow reveal">Academic Foundation</div>
+  <h2 class="reveal">Coursework</h2>
+  <div class="course-grid reveal">
+    <div class="course-block">
+      <div class="course-block-title">Current &amp; Completed</div>
+      <ul class="course-list">
+        <li>Aerospace Materials Laboratory</li>
+        <li>Mechanics of Composites</li>
+        <li>Spacecraft Dynamics</li>
+        <li>Control Systems</li>
+        <li>Differential Equations</li>
+      </ul>
     </div>
-    <div class="pub-item">
-      <div class="pub-year">2024</div>
-      <div><div class="pub-title">Reduced-Order Modelling of Transverse Combustion Instability Using OH* Chemiluminescence Data</div><div class="pub-venue">AIAA SciTech Forum 2024 · Orlando, FL</div></div>
-      <div class="pub-badge conf">Conference</div>
-    </div>
-    <div class="pub-item">
-      <div class="pub-year">2023</div>
-      <div><div class="pub-title">Adjoint-Based Nozzle Contour Optimisation for Maximum Vacuum Isp Under Separation Constraints</div><div class="pub-venue">Acta Astronautica · Vol. 212</div></div>
-      <div class="pub-badge">Journal</div>
-    </div>
-    <div class="pub-item">
-      <div class="pub-year">2023</div>
-      <div><div class="pub-title">Formation Flying Navigation for a 3U CubeSat Constellation: EKF Design and HIL Validation</div><div class="pub-venue">AIAA/AAS Astrodynamics Specialist Conference 2023</div></div>
-      <div class="pub-badge conf">Conference</div>
-    </div>
-    <div class="pub-item">
-      <div class="pub-year">2022</div>
-      <div><div class="pub-title">Structural Qualification of a CFRP Thrust Frame for a Small Launch Vehicle First Stage</div><div class="pub-venue">AIAA SciTech Forum 2022 · San Diego, CA</div></div>
-      <div class="pub-badge conf">Conference</div>
-    </div>
-    <div class="pub-item">
-      <div class="pub-year">2022</div>
-      <div><div class="pub-title">Parametric Mass Modelling and Staging Optimisation for Reusable Small Launch Vehicles</div><div class="pub-venue">Acta Astronautica · Vol. 199</div></div>
-      <div class="pub-badge">Journal</div>
+    <div class="course-block">
+      <div class="course-block-title">Fall 2026 (Planned)</div>
+      <ul class="course-list">
+        <li>Space Launch Vehicle Design &amp; Analysis</li>
+        <li>Structural Analysis</li>
+        <li>Computational Structural Dynamics</li>
+        <li>Flight Dynamics</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ══ CONTACT ══ -->
 <section id="contact">
   <div class="sec-eyebrow reveal">Get In Touch</div>
   <div class="contact-grid">
     <div class="reveal">
-      <div class="contact-tagline">Let's build something <span>extraordinary</span> together.</div>
-      <p style="max-width:40ch;margin-bottom:28px;font-size:13px">Open to research collaborations, full-time engineering roles, and consulting engagements in propulsion, structures, and mission systems.</p>
+      <div class="contact-tagline">Building the future<br><span>on the Moon.</span></div>
+      <p style="max-width:40ch;margin-bottom:24px;font-size:13px">Open to internship opportunities, research collaborations, and conversations about spacecraft structures, integration, and lunar architecture.</p>
       <div class="contact-links">
-        <a href="mailto:alex@merceraero.dev" class="contact-link"><span class="contact-link-icon">✉</span>alex@merceraero.dev</a>
-        <a href="#" class="contact-link"><span class="contact-link-icon">in</span>linkedin.com/in/alexmercer</a>
-        <a href="#" class="contact-link"><span class="contact-link-icon">⊛</span>scholar.google.com/alexmercer</a>
-        <a href="#" class="contact-link"><span class="contact-link-icon">⌥</span>github.com/amercer-aero</a>
+        <a href="mailto:AishaniGupta@utexas.edu" class="contact-link"><span class="contact-link-icon">✉</span>AishaniGupta@utexas.edu</a>
+        <a href="tel:4699240748" class="contact-link"><span class="contact-link-icon">◎</span>(469) 924-0748</a>
+        <a href="#" class="contact-link"><span class="contact-link-icon">in</span>LinkedIn</a>
+        <a href="#" class="contact-link"><span class="contact-link-icon">⊛</span>Portfolio</a>
       </div>
     </div>
     <div class="contact-form reveal">
-      <div class="form-group"><label class="form-label">Name</label><input type="text" class="form-input" placeholder="Jane Smith"></div>
-      <div class="form-group"><label class="form-label">Organisation</label><input type="text" class="form-input" placeholder="SpaceX / NASA / Acme Corp"></div>
-      <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Tell me about your project…"></textarea></div>
+      <div class="form-group"><label class="form-label">Name</label><input type="text" class="form-input" placeholder="Your name"></div>
+      <div class="form-group"><label class="form-label">Organisation</label><input type="text" class="form-input" placeholder="Company / University"></div>
+      <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Tell me about your project or opportunity…"></textarea></div>
       <button class="btn btn-primary" style="align-self:flex-start" onclick="alert('Message sent!')">Send Message →</button>
     </div>
   </div>
 </section>
 
 <footer>
-  <span>© 2025 Alex Mercer · Aerospace Engineer</span>
-  <span>MIT AeroAstro · Cambridge, MA</span>
+  <span>© 2025 Aishani Gupta · Aerospace Engineering</span>
+  <span>University of Texas at Austin · Class of 2027</span>
 </footer>
 
 </div><!-- /content-col -->
 
-<!-- ROCKET DIAGRAM COLUMN -->
+<!-- ══ ROCKET COLUMN ══ -->
 <div id="rocket-col">
   <div id="spb"><div id="spf"></div></div>
   <div id="rocket-svg-wrap">
-    <svg viewBox="0 0 200 560" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 280 680" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="bG" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#0b1a2e"/><stop offset="45%" stop-color="#162d4a"/><stop offset="100%" stop-color="#08111e"/>
+          <stop offset="0%"  stop-color="#1a0608"/>
+          <stop offset="40%" stop-color="#2e0f14"/>
+          <stop offset="100%" stop-color="#130406"/>
         </linearGradient>
         <linearGradient id="nG" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#0d2040"/><stop offset="55%" stop-color="#1c3f64"/><stop offset="100%" stop-color="#0a1830"/>
+          <stop offset="0%"  stop-color="#220810"/>
+          <stop offset="55%" stop-color="#3d1020"/>
+          <stop offset="100%" stop-color="#180608"/>
         </linearGradient>
         <linearGradient id="eG" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#152840"/><stop offset="100%" stop-color="#030810"/>
+          <stop offset="0%"  stop-color="#280a10"/>
+          <stop offset="100%" stop-color="#040105"/>
         </linearGradient>
         <radialGradient id="xG" cx="50%" cy="0%" r="80%">
-          <stop offset="0%" stop-color="#fff" stop-opacity=".95"/>
-          <stop offset="18%" stop-color="#ffe566" stop-opacity=".9"/>
-          <stop offset="45%" stop-color="#ff6030" stop-opacity=".7"/>
-          <stop offset="100%" stop-color="#ff3010" stop-opacity="0"/>
+          <stop offset="0%"   stop-color="#fff"    stop-opacity=".95"/>
+          <stop offset="15%"  stop-color="#ffcc44" stop-opacity=".9"/>
+          <stop offset="40%"  stop-color="#e84020" stop-opacity=".75"/>
+          <stop offset="100%" stop-color="#c81020" stop-opacity="0"/>
         </radialGradient>
-        <filter id="gl"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="gl">
+          <feGaussianBlur stdDeviation="2.5" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="glsm">
+          <feGaussianBlur stdDeviation="1.2" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
       </defs>
 
-      <!-- EXHAUST -->
-      <g id="rex" style="transform-origin:100px 480px">
-        <ellipse cx="100" cy="510" rx="20" ry="38" fill="url(#xG)" opacity=".9"/>
-        <ellipse cx="100" cy="496" rx="9"  ry="16" fill="#fff" opacity=".35"/>
+      <!-- ── EXHAUST ── -->
+      <g id="rex" style="transform-origin:140px 596px">
+        <ellipse cx="140" cy="636" rx="26" ry="50" fill="url(#xG)" opacity=".9"/>
+        <ellipse cx="140" cy="616" rx="11" ry="22" fill="#fff" opacity=".3"/>
+        <!-- secondary plumes -->
+        <ellipse cx="118" cy="618" rx="8" ry="16" fill="url(#xG)" opacity=".4"/>
+        <ellipse cx="162" cy="618" rx="8" ry="16" fill="url(#xG)" opacity=".4"/>
       </g>
 
-      <!-- FINS -->
-      <g class="r-fins" id="gFins">
-        <path d="M68 450 L46 490 L68 480Z" fill="url(#bG)" stroke="rgba(0,200,240,.35)" stroke-width=".8"/>
-        <path d="M132 450 L154 490 L132 480Z" fill="url(#bG)" stroke="rgba(0,200,240,.35)" stroke-width=".8"/>
-        <line x1="53" y1="484" x2="68" y2="463" stroke="rgba(0,200,240,.12)" stroke-width=".5"/>
-        <line x1="147" y1="484" x2="132" y2="463" stroke="rgba(0,200,240,.12)" stroke-width=".5"/>
+      <!-- ── FINS ── -->
+      <g class="r-fins" id="gFins" style="transform-origin:140px 580px">
+        <!-- Left fin -->
+        <path d="M95 560 L56 618 L95 600Z"  fill="url(#bG)" stroke="rgba(200,25,43,.4)" stroke-width="1"/>
+        <path d="M95 575 L64 612 L95 600Z"  fill="rgba(200,25,43,.08)"/>
+        <line x1="63" y1="606" x2="95" y2="574" stroke="rgba(200,25,43,.15)" stroke-width=".6"/>
+        <!-- Right fin -->
+        <path d="M185 560 L224 618 L185 600Z" fill="url(#bG)" stroke="rgba(200,25,43,.4)" stroke-width="1"/>
+        <path d="M185 575 L216 612 L185 600Z" fill="rgba(200,25,43,.08)"/>
+        <line x1="217" y1="606" x2="185" y2="574" stroke="rgba(200,25,43,.15)" stroke-width=".6"/>
+        <!-- Fin strake lines -->
+        <line x1="72" y1="612" x2="95" y2="566" stroke="rgba(200,25,43,.08)" stroke-width=".5"/>
+        <line x1="208" y1="612" x2="185" y2="566" stroke="rgba(200,25,43,.08)" stroke-width=".5"/>
       </g>
 
-      <!-- NOZZLE -->
+      <!-- ── NOZZLE BELL ── -->
       <g class="r-lower" id="gNozzle">
-        <path d="M77 480 L68 480 L57 520 L143 520 L132 480 L123 480Z" fill="url(#eG)" stroke="rgba(0,200,240,.2)" stroke-width=".7"/>
-        <line x1="72" y1="480" x2="63" y2="520" stroke="rgba(0,200,240,.07)" stroke-width=".5"/>
-        <line x1="86" y1="480" x2="81" y2="520" stroke="rgba(0,200,240,.07)" stroke-width=".5"/>
-        <line x1="100" y1="480" x2="100" y2="520" stroke="rgba(0,200,240,.07)" stroke-width=".5"/>
-        <line x1="114" y1="480" x2="119" y2="520" stroke="rgba(0,200,240,.07)" stroke-width=".5"/>
-        <line x1="128" y1="480" x2="137" y2="520" stroke="rgba(0,200,240,.07)" stroke-width=".5"/>
-        <rect x="72" y="479" width="56" height="5" rx="1" fill="rgba(0,200,240,.08)" stroke="rgba(0,200,240,.4)" stroke-width=".7"/>
+        <!-- Nozzle bell shape - flares outward -->
+        <path d="M105 596 L95 596 L74 648 L206 648 L185 596 L175 596Z" fill="url(#eG)" stroke="rgba(200,25,43,.25)" stroke-width=".9"/>
+        <!-- Cooling channels -->
+        <line x1="99"  y1="596" x2="80"  y2="648" stroke="rgba(200,25,43,.08)" stroke-width=".6"/>
+        <line x1="113" y1="596" x2="101" y2="648" stroke="rgba(200,25,43,.08)" stroke-width=".6"/>
+        <line x1="127" y1="596" x2="122" y2="648" stroke="rgba(200,25,43,.08)" stroke-width=".6"/>
+        <line x1="140" y1="596" x2="140" y2="648" stroke="rgba(200,25,43,.08)" stroke-width=".6"/>
+        <line x1="153" y1="596" x2="158" y2="648" stroke="rgba(200,25,43,.08)" stroke-width=".6"/>
+        <line x1="167" y1="596" x2="179" y2="648" stroke="rgba(200,25,43,.08)" stroke-width=".6"/>
+        <line x1="181" y1="596" x2="200" y2="648" stroke="rgba(200,25,43,.08)" stroke-width=".6"/>
+        <!-- Throat ring -->
+        <rect x="100" y="594" width="80" height="6" rx="1" fill="rgba(200,25,43,.1)" stroke="rgba(200,25,43,.5)" stroke-width=".9"/>
+        <!-- Nozzle exit ring -->
+        <rect x="74" y="644" width="132" height="5" rx="1" fill="rgba(200,25,43,.06)" stroke="rgba(200,25,43,.3)" stroke-width=".6"/>
       </g>
 
-      <!-- FIRST STAGE -->
+      <!-- ── FIRST STAGE ── -->
       <g class="r-lower" id="gS1">
-        <rect x="68" y="330" width="64" height="150" fill="url(#bG)" stroke="rgba(0,200,240,.18)" stroke-width=".8"/>
-        <line x1="68" y1="364" x2="132" y2="364" stroke="rgba(0,200,240,.07)" stroke-width=".5"/>
-        <line x1="68" y1="398" x2="132" y2="398" stroke="rgba(0,200,240,.07)" stroke-width=".5"/>
-        <line x1="68" y1="432" x2="132" y2="432" stroke="rgba(0,200,240,.07)" stroke-width=".5"/>
-        <line x1="100" y1="330" x2="100" y2="480" stroke="rgba(0,200,240,.05)" stroke-width=".5"/>
-        <text x="100" y="384" text-anchor="middle" fill="rgba(0,200,240,.45)" font-size="6.5" font-family="'IBM Plex Mono',monospace" letter-spacing="2">STAGE 1</text>
-        <circle cx="85"  cy="415" r="2.5" fill="rgba(255,92,40,.12)" stroke="rgba(255,92,40,.5)" stroke-width=".7"/>
-        <circle cx="100" cy="415" r="2.5" fill="rgba(255,92,40,.12)" stroke="rgba(255,92,40,.5)" stroke-width=".7"/>
-        <circle cx="115" cy="415" r="2.5" fill="rgba(255,92,40,.12)" stroke="rgba(255,92,40,.5)" stroke-width=".7"/>
-        <rect x="68" y="330" width="64" height="5" fill="rgba(0,200,240,.09)" stroke="rgba(0,200,240,.28)" stroke-width=".5"/>
-        <rect x="80" y="444" width="40" height="7" rx="1" fill="rgba(0,200,240,.06)" stroke="rgba(0,200,240,.28)" stroke-width=".5"/>
+        <!-- Main body -->
+        <rect x="95" y="400" width="90" height="196" fill="url(#bG)" stroke="rgba(200,25,43,.22)" stroke-width=".9"/>
+        <!-- Panel lines horizontal -->
+        <line x1="95"  y1="448" x2="185" y2="448" stroke="rgba(200,25,43,.08)" stroke-width=".6"/>
+        <line x1="95"  y1="496" x2="185" y2="496" stroke="rgba(200,25,43,.08)" stroke-width=".6"/>
+        <line x1="95"  y1="544" x2="185" y2="544" stroke="rgba(200,25,43,.08)" stroke-width=".6"/>
+        <!-- Vertical center line -->
+        <line x1="140" y1="400" x2="140" y2="596" stroke="rgba(200,25,43,.05)" stroke-width=".6"/>
+        <!-- Stage 1 label band -->
+        <rect x="95"  y="462" width="90" height="14" fill="rgba(200,25,43,.06)"/>
+        <text x="140" y="472" text-anchor="middle" fill="rgba(200,25,43,.55)" font-size="7.5" font-family="'IBM Plex Mono',monospace" letter-spacing="2.5">STAGE  1</text>
+        <!-- Engine sensors row -->
+        <circle cx="118" cy="524" r="3.5" fill="rgba(200,25,43,.12)" stroke="rgba(200,25,43,.55)" stroke-width=".9"/>
+        <circle cx="140" cy="524" r="3.5" fill="rgba(200,25,43,.12)" stroke="rgba(200,25,43,.55)" stroke-width=".9"/>
+        <circle cx="162" cy="524" r="3.5" fill="rgba(200,25,43,.12)" stroke="rgba(200,25,43,.55)" stroke-width=".9"/>
+        <!-- Propellant port label -->
+        <rect x="112" y="554" width="56" height="10" rx="1" fill="rgba(200,25,43,.07)" stroke="rgba(200,25,43,.3)" stroke-width=".6"/>
+        <text x="140" y="562" text-anchor="middle" fill="rgba(200,25,43,.45)" font-size="5.5" font-family="'IBM Plex Mono',monospace">LOX / RP-1</text>
+        <!-- Top cap / interstage adapter ring -->
+        <rect x="95"  y="400" width="90" height="7" fill="rgba(200,25,43,.12)" stroke="rgba(200,25,43,.35)" stroke-width=".6"/>
+        <!-- Aft skirt -->
+        <rect x="90"  y="588" width="100" height="10" rx="1" fill="rgba(200,25,43,.09)" stroke="rgba(200,25,43,.35)" stroke-width=".8"/>
       </g>
 
-      <!-- INTERSTAGE -->
+      <!-- ── INTERSTAGE ── -->
       <g class="r-inter" id="gInter">
-        <rect x="68" y="302" width="64" height="30" fill="rgba(10,20,36,.92)" stroke="rgba(0,200,240,.28)" stroke-width=".8"/>
-        <line x1="74"  y1="302" x2="68"  y2="332" stroke="rgba(0,200,240,.1)" stroke-width=".5"/>
-        <line x1="87"  y1="302" x2="78"  y2="332" stroke="rgba(0,200,240,.1)" stroke-width=".5"/>
-        <line x1="100" y1="302" x2="91"  y2="332" stroke="rgba(0,200,240,.1)" stroke-width=".5"/>
-        <line x1="113" y1="302" x2="104" y2="332" stroke="rgba(0,200,240,.1)" stroke-width=".5"/>
-        <line x1="126" y1="302" x2="117" y2="332" stroke="rgba(0,200,240,.1)" stroke-width=".5"/>
-        <text x="100" y="321" text-anchor="middle" fill="rgba(0,200,240,.45)" font-size="5.5" font-family="'IBM Plex Mono',monospace" letter-spacing="2">INTERSTAGE</text>
+        <rect x="95" y="362" width="90" height="40" fill="rgba(16,5,8,.95)" stroke="rgba(200,25,43,.35)" stroke-width=".9"/>
+        <!-- Diagonal hatching -->
+        <line x1="102" y1="362" x2="95"  y2="402" stroke="rgba(200,25,43,.12)" stroke-width=".6"/>
+        <line x1="117" y1="362" x2="105" y2="402" stroke="rgba(200,25,43,.12)" stroke-width=".6"/>
+        <line x1="132" y1="362" x2="118" y2="402" stroke="rgba(200,25,43,.12)" stroke-width=".6"/>
+        <line x1="147" y1="362" x2="132" y2="402" stroke="rgba(200,25,43,.12)" stroke-width=".6"/>
+        <line x1="162" y1="362" x2="147" y2="402" stroke="rgba(200,25,43,.12)" stroke-width=".6"/>
+        <line x1="177" y1="362" x2="162" y2="402" stroke="rgba(200,25,43,.12)" stroke-width=".6"/>
+        <line x1="185" y1="368" x2="177" y2="402" stroke="rgba(200,25,43,.12)" stroke-width=".6"/>
+        <text x="140" y="386" text-anchor="middle" fill="rgba(200,25,43,.5)" font-size="6.5" font-family="'IBM Plex Mono',monospace" letter-spacing="2">INTERSTAGE</text>
+        <!-- Sep bolt indicators -->
+        <circle cx="103" cy="382" r="2" fill="none" stroke="rgba(200,25,43,.4)" stroke-width=".6"/>
+        <circle cx="177" cy="382" r="2" fill="none" stroke="rgba(200,25,43,.4)" stroke-width=".6"/>
       </g>
 
-      <!-- UPPER STAGE -->
+      <!-- ── UPPER STAGE / STAGE 2 ── -->
       <g class="r-upper" id="gS2">
-        <rect x="68" y="160" width="64" height="143" fill="url(#bG)" stroke="rgba(0,200,240,.18)" stroke-width=".8"/>
-        <line x1="68" y1="193" x2="132" y2="193" stroke="rgba(0,200,240,.07)" stroke-width=".5"/>
-        <line x1="68" y1="226" x2="132" y2="226" stroke="rgba(0,200,240,.07)" stroke-width=".5"/>
-        <line x1="68" y1="259" x2="132" y2="259" stroke="rgba(0,200,240,.07)" stroke-width=".5"/>
-        <circle cx="100" cy="210" r="8"   fill="rgba(0,150,200,.1)"  stroke="rgba(0,200,240,.4)" stroke-width="1"/>
-        <circle cx="100" cy="210" r="4.5" fill="rgba(0,180,220,.12)"/>
-        <text x="100" y="249" text-anchor="middle" fill="rgba(0,200,240,.45)" font-size="6.5" font-family="'IBM Plex Mono',monospace" letter-spacing="2">STAGE 2</text>
-        <rect x="68" y="160" width="64" height="5" fill="rgba(0,200,240,.08)" stroke="rgba(0,200,240,.28)" stroke-width=".5"/>
-        <rect x="84" y="269" width="32" height="8" rx="1" fill="rgba(0,200,240,.06)" stroke="rgba(0,200,240,.22)" stroke-width=".5"/>
-        <text x="100" y="276" text-anchor="middle" fill="rgba(0,200,240,.35)" font-size="4.5" font-family="'IBM Plex Mono',monospace">DATA PORT</text>
+        <rect x="95" y="196" width="90" height="168" fill="url(#bG)" stroke="rgba(200,25,43,.2)" stroke-width=".9"/>
+        <!-- Panel lines -->
+        <line x1="95"  y1="238" x2="185" y2="238" stroke="rgba(200,25,43,.07)" stroke-width=".6"/>
+        <line x1="95"  y1="280" x2="185" y2="280" stroke="rgba(200,25,43,.07)" stroke-width=".6"/>
+        <line x1="95"  y1="322" x2="185" y2="322" stroke="rgba(200,25,43,.07)" stroke-width=".6"/>
+        <!-- Viewport window -->
+        <circle cx="140" cy="258" r="11"  fill="rgba(200,25,43,.08)" stroke="rgba(200,25,43,.45)" stroke-width="1.1"/>
+        <circle cx="140" cy="258" r="6.5" fill="rgba(180,20,40,.12)" stroke="rgba(200,25,43,.2)" stroke-width=".6"/>
+        <!-- Stage 2 label -->
+        <rect x="95"  y="296" width="90" height="14" fill="rgba(200,25,43,.05)"/>
+        <text x="140" y="306" text-anchor="middle" fill="rgba(200,25,43,.5)" font-size="7.5" font-family="'IBM Plex Mono',monospace" letter-spacing="2.5">STAGE  2</text>
+        <!-- Data port -->
+        <rect x="112" y="330" width="56" height="10" rx="1" fill="rgba(200,25,43,.06)" stroke="rgba(200,25,43,.22)" stroke-width=".6"/>
+        <text x="140" y="338" text-anchor="middle" fill="rgba(200,25,43,.35)" font-size="5" font-family="'IBM Plex Mono',monospace">DATA · AVIONICS</text>
+        <!-- Top cap ring -->
+        <rect x="95" y="196" width="90" height="7" fill="rgba(200,25,43,.1)" stroke="rgba(200,25,43,.32)" stroke-width=".6"/>
+        <!-- Side details — RCS pods -->
+        <rect x="83"  y="220" width="14" height="20" rx="2" fill="rgba(200,25,43,.08)" stroke="rgba(200,25,43,.3)" stroke-width=".6"/>
+        <rect x="183" y="220" width="14" height="20" rx="2" fill="rgba(200,25,43,.08)" stroke="rgba(200,25,43,.3)" stroke-width=".6"/>
       </g>
 
-      <!-- PAYLOAD FAIRING -->
+      <!-- ── PAYLOAD FAIRING (NOSE) ── -->
       <g class="r-nose" id="gNose">
-        <path d="M100 18 Q126 48 132 96 L132 160 L68 160 L68 96 Q74 48 100 18Z" fill="url(#nG)" stroke="rgba(0,200,240,.28)" stroke-width=".8"/>
-        <path d="M100 18 Q120 48 124 96 L124 160 L100 160Z" fill="rgba(255,255,255,.035)"/>
-        <line x1="100" y1="22" x2="100" y2="160" stroke="rgba(0,200,240,.18)" stroke-width=".6" stroke-dasharray="3 3"/>
-        <line x1="73"  y1="66"  x2="127" y2="66"  stroke="rgba(0,200,240,.09)" stroke-width=".5"/>
-        <line x1="69"  y1="95"  x2="131" y2="95"  stroke="rgba(0,200,240,.09)" stroke-width=".5"/>
-        <line x1="68"  y1="124" x2="132" y2="124" stroke="rgba(0,200,240,.09)" stroke-width=".5"/>
-        <circle cx="100" cy="20" r="2.5" fill="var(--c1)" opacity=".75" filter="url(#gl)"/>
-        <text x="100" y="106" text-anchor="middle" fill="rgba(0,200,240,.4)" font-size="6" font-family="'IBM Plex Mono',monospace" letter-spacing="2">PAYLOAD</text>
-        <rect x="68" y="153" width="64" height="8" fill="rgba(0,200,240,.07)" stroke="rgba(0,200,240,.32)" stroke-width=".7"/>
+        <!-- Fairing shape — two halves (left slightly different shade) -->
+        <path d="M140 22 Q174 56 182 108 L182 196 L98 196 L98 108 Q106 56 140 22Z" fill="url(#nG)" stroke="rgba(200,25,43,.3)" stroke-width=".9"/>
+        <!-- Highlight on right half -->
+        <path d="M140 22 Q168 56 174 108 L174 196 L140 196Z" fill="rgba(255,255,255,.035)"/>
+        <!-- Split line (separation seam) -->
+        <line x1="140" y1="26" x2="140" y2="196" stroke="rgba(200,25,43,.25)" stroke-width=".7" stroke-dasharray="4 3"/>
+        <!-- Rib lines -->
+        <line x1="104" y1="78"  x2="176" y2="78"  stroke="rgba(200,25,43,.1)" stroke-width=".6"/>
+        <line x1="99"  y1="112" x2="181" y2="112" stroke="rgba(200,25,43,.1)" stroke-width=".6"/>
+        <line x1="97"  y1="146" x2="183" y2="146" stroke="rgba(200,25,43,.1)" stroke-width=".6"/>
+        <line x1="96"  y1="174" x2="184" y2="174" stroke="rgba(200,25,43,.1)" stroke-width=".6"/>
+        <!-- Nose tip glow -->
+        <circle cx="140" cy="24" r="4" fill="var(--c1)" opacity=".7" filter="url(#gl)"/>
+        <circle cx="140" cy="24" r="2" fill="#fff" opacity=".6"/>
+        <!-- Payload label -->
+        <text x="140" y="130" text-anchor="middle" fill="rgba(200,25,43,.42)" font-size="7" font-family="'IBM Plex Mono',monospace" letter-spacing="2">PAYLOAD</text>
+        <text x="140" y="143" text-anchor="middle" fill="rgba(200,25,43,.3)" font-size="6" font-family="'IBM Plex Mono',monospace" letter-spacing="1.5">FAIRING</text>
+        <!-- Fairing join band -->
+        <rect x="96"  y="186" width="88" height="11" fill="rgba(200,25,43,.09)" stroke="rgba(200,25,43,.38)" stroke-width=".8"/>
+        <!-- UT Longhorn subtle mark -->
+        <text x="140" y="166" text-anchor="middle" fill="rgba(200,25,43,.18)" font-size="10" font-family="'Orbitron',sans-serif" font-weight="900">UT</text>
       </g>
 
-      <!-- CALLOUT LABELS -->
+      <!-- ══ CALLOUT LABELS ══ -->
+      <!-- Nose callout — right side -->
       <g class="r-callout" id="cNose">
-        <line x1="132" y1="76" x2="158" y2="76" stroke="rgba(0,200,240,.55)" stroke-width=".5"/>
-        <circle cx="132" cy="76" r="1.8" fill="var(--c1)"/>
-        <text x="161" y="80" fill="rgba(0,200,240,.8)" font-size="6.5" font-family="'IBM Plex Mono',monospace" letter-spacing="1">FAIRING</text>
+        <line x1="182" y1="96" x2="212" y2="96" stroke="rgba(200,25,43,.6)" stroke-width=".6"/>
+        <circle cx="182" cy="96" r="2.2" fill="var(--c1)"/>
+        <text x="216" y="100" fill="rgba(200,25,43,.85)" font-size="7.5" font-family="'IBM Plex Mono',monospace" letter-spacing="1">FAIRING</text>
       </g>
+      <!-- S2 callout -->
       <g class="r-callout" id="cS2">
-        <line x1="132" y1="226" x2="158" y2="226" stroke="rgba(200,255,92,.55)" stroke-width=".5"/>
-        <circle cx="132" cy="226" r="1.8" fill="var(--c3)"/>
-        <text x="161" y="230" fill="rgba(200,255,92,.8)" font-size="6.5" font-family="'IBM Plex Mono',monospace" letter-spacing="1">STG 2</text>
+        <line x1="185" y1="280" x2="212" y2="280" stroke="rgba(232,67,42,.6)" stroke-width=".6"/>
+        <circle cx="185" cy="280" r="2.2" fill="var(--c2)"/>
+        <text x="216" y="284" fill="rgba(232,67,42,.85)" font-size="7.5" font-family="'IBM Plex Mono',monospace" letter-spacing="1">STAGE 2</text>
       </g>
+      <!-- Interstage callout -->
       <g class="r-callout" id="cInter">
-        <line x1="132" y1="317" x2="158" y2="317" stroke="rgba(255,255,255,.4)" stroke-width=".5"/>
-        <circle cx="132" cy="317" r="1.8" fill="rgba(255,255,255,.7)"/>
-        <text x="161" y="321" fill="rgba(255,255,255,.65)" font-size="6.5" font-family="'IBM Plex Mono',monospace" letter-spacing="1">INTER</text>
+        <line x1="185" y1="382" x2="212" y2="382" stroke="rgba(180,80,80,.6)" stroke-width=".6"/>
+        <circle cx="185" cy="382" r="2.2" fill="rgba(180,80,80,.9)"/>
+        <text x="216" y="386" fill="rgba(180,80,80,.85)" font-size="7.5" font-family="'IBM Plex Mono',monospace" letter-spacing="1">INTER</text>
       </g>
+      <!-- S1 callout -->
       <g class="r-callout" id="cS1">
-        <line x1="132" y1="404" x2="158" y2="404" stroke="rgba(255,92,40,.55)" stroke-width=".5"/>
-        <circle cx="132" cy="404" r="1.8" fill="var(--c2)"/>
-        <text x="161" y="408" fill="rgba(255,92,40,.8)" font-size="6.5" font-family="'IBM Plex Mono',monospace" letter-spacing="1">STG 1</text>
+        <line x1="185" y1="500" x2="212" y2="500" stroke="rgba(255,100,60,.6)" stroke-width=".6"/>
+        <circle cx="185" cy="500" r="2.2" fill="var(--c3)"/>
+        <text x="216" y="504" fill="rgba(255,153,102,.85)" font-size="7.5" font-family="'IBM Plex Mono',monospace" letter-spacing="1">STAGE 1</text>
       </g>
-      <g class="r-callout" id="cEngine">
-        <line x1="143" y1="500" x2="158" y2="500" stroke="rgba(255,92,40,.4)" stroke-width=".5"/>
-        <circle cx="143" cy="500" r="1.8" fill="var(--c2)" opacity=".7"/>
-        <text x="161" y="504" fill="rgba(255,92,40,.7)" font-size="6.5" font-family="'IBM Plex Mono',monospace" letter-spacing="1">ENGINE</text>
+      <!-- Engine callout -->
+      <g class="r-callout" id="cEng">
+        <line x1="206" y1="620" x2="220" y2="620" stroke="rgba(200,25,43,.5)" stroke-width=".6"/>
+        <circle cx="206" cy="620" r="2.2" fill="var(--c1)" opacity=".8"/>
+        <text x="224" y="624" fill="rgba(200,25,43,.75)" font-size="7.5" font-family="'IBM Plex Mono',monospace" letter-spacing="1">ENGINE</text>
       </g>
+
     </svg>
   </div>
 </div>
@@ -574,28 +706,48 @@ footer{padding:28px 48px;border-top:1px solid var(--line);display:flex;align-ite
 </div><!-- /layout -->
 
 <script>
-// STARFIELD
+// ─── STARFIELD ─────────────────────────────────────────────
 (function(){
   const c=document.getElementById('stars'),ctx=c.getContext('2d');
   let W,H,stars=[];
-  function init(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;stars=Array.from({length:280},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.2,o:Math.random()*.7+.1,t:Math.random()*6.28,s:Math.random()*.014+.004}))}
-  function draw(){ctx.clearRect(0,0,W,H);stars.forEach(s=>{s.t+=s.s;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,6.28);ctx.fillStyle=`rgba(180,220,255,${s.o*(.5+.5*Math.sin(s.t))})`;ctx.fill()});requestAnimationFrame(draw)}
+  function init(){
+    W=c.width=window.innerWidth;H=c.height=window.innerHeight;
+    stars=Array.from({length:300},()=>({
+      x:Math.random()*W,y:Math.random()*H,
+      r:Math.random()*1.3+.2,
+      o:Math.random()*.6+.1,
+      t:Math.random()*6.28,
+      s:Math.random()*.012+.004
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    stars.forEach(s=>{
+      s.t+=s.s;
+      // Subtle red tint on some stars
+      const rb=s.x/W;
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,6.28);
+      ctx.fillStyle=`rgba(${Math.round(200+rb*55)},${Math.round(160-rb*80)},${Math.round(170-rb*80)},${s.o*(.5+.5*Math.sin(s.t))})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
   init();draw();window.addEventListener('resize',init);
 })();
 
-// REVEAL
-const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in-view')}),{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+// ─── REVEAL ───────────────────────────────────────────────
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in-view')}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
-// SKILL BARS
-const sbObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.w+'%';sbObs.unobserve(e.target)}}),{threshold:.5});
-document.querySelectorAll('.skill-bar').forEach(b=>sbObs.observe(b));
+// ─── SKILL BARS ───────────────────────────────────────────
+const sbo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.w+'%';sbo.unobserve(e.target)}}),{threshold:.5});
+document.querySelectorAll('.skill-bar').forEach(b=>sbo.observe(b));
 
-// NAV ACTIVE
-const sectObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{threshold:.3});
-document.querySelectorAll('section[id]').forEach(s=>sectObs.observe(s));
+// ─── NAV ACTIVE ───────────────────────────────────────────
+const nso=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{threshold:.3});
+document.querySelectorAll('section[id]').forEach(s=>nso.observe(s));
 
-// SCROLL-DRIVEN ROCKET SEPARATION
+// ─── SCROLL ROCKET SEPARATION ─────────────────────────────
 const nose=document.getElementById('gNose');
 const s2=document.getElementById('gS2');
 const inter=document.getElementById('gInter');
@@ -604,14 +756,12 @@ const nozzle=document.getElementById('gNozzle');
 const fins=document.getElementById('gFins');
 const exhaust=document.getElementById('rex');
 const spf=document.getElementById('spf');
-
-// callout elements
 const callouts={
   nose:  document.getElementById('cNose'),
   s2:    document.getElementById('cS2'),
   inter: document.getElementById('cInter'),
   s1:    document.getElementById('cS1'),
-  eng:   document.getElementById('cEngine'),
+  eng:   document.getElementById('cEng'),
 };
 
 function lerp(a,b,t){return a+(b-a)*Math.max(0,Math.min(1,t))}
@@ -621,41 +771,38 @@ function onScroll(){
   const p=window.scrollY/Math.max(1,document.body.scrollHeight-window.innerHeight);
   spf.style.height=(p*100)+'%';
 
-  // Each stage separates progressively as you scroll
-  // Nose lifts first (scroll 10%–35%)
-  const np=easeOut((p-.10)/.26);
-  nose.style.transform=`translate(${lerp(0,8,np)}px,${lerp(0,-72,np)}px)`;
+  // Nose lifts early (0.08 → 0.32)
+  const np=easeOut((p-.08)/.25);
+  nose.style.transform=`translate(${lerp(0,10,np)}px,${lerp(0,-80,np)}px)`;
 
-  // Stage 2 separates next (25%–50%)
-  const s2p=easeOut((p-.25)/.26);
-  s2.style.transform=`translate(${lerp(0,5,s2p)}px,${lerp(0,-46,s2p)}px)`;
+  // Stage 2 lifts next (0.22 → 0.48)
+  const s2p=easeOut((p-.22)/.27);
+  s2.style.transform=`translate(${lerp(0,6,s2p)}px,${lerp(0,-52,s2p)}px)`;
 
-  // Interstage drifts (40%–62%)
-  const ip=easeOut((p-.40)/.23);
-  inter.style.transform=`translate(${lerp(0,3,ip)}px,${lerp(0,-22,ip)}px)`;
+  // Interstage drifts (0.38 → 0.60)
+  const ip=easeOut((p-.38)/.23);
+  inter.style.transform=`translate(${lerp(0,3,ip)}px,${lerp(0,-24,ip)}px)`;
 
-  // Stage 1 + nozzle drop slightly (55%–78%)
-  const s1p=easeOut((p-.55)/.23);
-  s1.style.transform=`translate(${lerp(0,-4,s1p)}px,${lerp(0,18,s1p)}px)`;
+  // Stage 1 settles down slightly (0.52 → 0.74)
+  const s1p=easeOut((p-.52)/.23);
+  s1.style.transform=`translate(${lerp(0,-5,s1p)}px,${lerp(0,22,s1p)}px)`;
 
-  // Nozzle drops further (65%–88%)
+  // Nozzle + fins drop (0.65 → 0.88)
   const nzp=easeOut((p-.65)/.24);
-  nozzle.style.transform=`translate(0,${lerp(0,36,nzp)}px)`;
+  nozzle.style.transform=`translate(0,${lerp(0,42,nzp)}px)`;
+  fins.style.transform=`translate(0,${lerp(0,46,nzp)}px) scaleX(${lerp(1,1.25,nzp)})`;
 
-  // Fins splay + drop with nozzle
-  fins.style.transform=`translate(0,${lerp(0,38,nzp)}px) scaleX(${lerp(1,1.22,nzp)})`;
-  fins.style.transformOrigin='center center';
+  // Exhaust fades
+  exhaust.style.opacity=String(lerp(1,0,Math.max(0,(p-.42)/.24)));
 
-  // Exhaust fades as rocket separates
-  exhaust.style.opacity=lerp(1,0,Math.max(0,(p-.45)/.25));
-
-  // Show callout labels once separation is visible
-  callouts.nose.classList.toggle('show',  np   > .45);
-  callouts.s2.classList.toggle('show',    s2p  > .45);
-  callouts.inter.classList.toggle('show', ip   > .45);
-  callouts.s1.classList.toggle('show',    s1p  > .45);
-  callouts.eng.classList.toggle('show',   nzp  > .45);
+  // Callouts
+  callouts.nose.classList.toggle('show',  np   > .4);
+  callouts.s2.classList.toggle('show',    s2p  > .4);
+  callouts.inter.classList.toggle('show', ip   > .4);
+  callouts.s1.classList.toggle('show',    s1p  > .4);
+  callouts.eng.classList.toggle('show',   nzp  > .4);
 }
+
 window.addEventListener('scroll',onScroll,{passive:true});
 onScroll();
 </script>
