@@ -251,11 +251,10 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;align-ite
   80%    { transform:translate(2px,-2px) }
 }
 #rocket-svg-wrap.blasting svg {
-  animation: blastoff 2.2s cubic-bezier(0.4,0,0.2,1) forwards;
+  animation: blastoff 1.2s cubic-bezier(0.4,0,0.2,1) forwards !important;
 }
 #rocket-svg-wrap.blasting #rex {
-  animation: blastoffExhaust 2.2s ease forwards;
-  transform-origin: 50% 0;
+  animation: blastoffExhaust 1.2s ease forwards !important;
 }
 #rocket-col.shaking { animation: blastShake 0.4s ease; }
 #rocket-svg-wrap.blasting .r-callout { opacity:0 !important; transition:none; }
@@ -554,6 +553,7 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;align-ite
 <div id="rocket-col">
   <div id="spb"><div id="spf"></div></div>
   <div id="rocket-svg-wrap">
+    <div class="r-callout-text" style="position: absolute; top: 40px; right: 10px; color: #ff4d4d; font-family: 'IBM Plex Mono', monospace; font-weight: bold; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">About</div>
     <svg viewBox="0 0 280 760" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="bG" x1="0" y1="0" x2="1" y2="0">
@@ -775,20 +775,21 @@ setTimeout(() => { landingComplete = true; onScroll(); }, 3100);
 
 function onScroll(){
   if (!landingComplete) return;
-  const p=window.scrollY/Math.max(1,document.body.scrollHeight-window.innerHeight);
-  spf.style.height=(p*100)+'%';
+  const p = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);
+  spf.style.height = (p * 100) + '%';
 
-  // --- Update Labels based on scroll percentage ---
+  // 1. Update the dynamic label
   let activeStage = 0;
   if (p < 0.20) activeStage = 0;      // About
-  else if (p < 0.55) activeStage = 1; // Experiences (Longest section)
-  else if (p < 0.80) activeStage = 2; // Projects
-  else if (p < 0.96) activeStage = 3; // Skills
+  else if (p < 0.50) activeStage = 1; // Experiences
+  else if (p < 0.75) activeStage = 2; // Projects
+  else if (p < 0.94) activeStage = 3; // Skills
   else activeStage = 4;               // Blastoff!
 
-  if (calloutText) calloutText.innerText = stageLabels[activeStage];
+  const labelEl = document.querySelector('.r-callout-text');
+  if (labelEl) labelEl.innerText = stageLabels[activeStage];
 
-  // --- Rocket Part Transitions (Adjusted for larger page) ---
+  // 2. Rocket Part Transitions (Synchronized to scroll)
   const np = easeOut((p - 0.05) / 0.20); 
   nose.style.transform = `translate(${lerp(0,10,np)}px,${lerp(0,-80,np)}px)`;
 
@@ -805,7 +806,7 @@ function onScroll(){
   nozzle.style.transform = `translate(0,${lerp(0,42,nzp)}px)`;
   fins.style.transform = `translate(0,${lerp(0,46,nzp)}px) scaleX(${lerp(1,1.25,nzp)})`;
 
-  exhaust.style.opacity = String(lerp(1,0,Math.max(0,(p-.42)/.24)));
+  exhaust.style.opacity = String(lerp(1, 0, (p - 0.1) / 0.2));
 }
 
 window.addEventListener('scroll',onScroll,{passive:true});
