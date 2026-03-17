@@ -741,7 +741,6 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;align-ite
     ctx.clearRect(0,0,W,H);
     stars.forEach(s=>{
       s.t+=s.s;
-      // Subtle red tint on some stars
       const rb=s.x/W;
       ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,6.28);
       ctx.fillStyle=`rgba(${Math.round(200+rb*55)},${Math.round(160-rb*80)},${Math.round(170-rb*80)},${s.o*(.5+.5*Math.sin(s.t))})`;
@@ -752,34 +751,21 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;align-ite
   init();draw();window.addEventListener('resize',init);
 })();
 
-// ─── REVEAL ───────────────────────────────────────────────
+// ─── REVEAL & SKILLS ──────────────────────────────────────
 const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in-view')}),{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
-// ─── SKILL BARS ───────────────────────────────────────────
 const sbo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.w+'%';sbo.unobserve(e.target)}}),{threshold:.5});
 document.querySelectorAll('.skill-bar').forEach(b=>sbo.observe(b));
 
-// ─── NAV ACTIVE ───────────────────────────────────────────
-const nso=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{threshold:.3});
-document.querySelectorAll('section[id]').forEach(s=>nso.observe(s));
+// ─── ROCKET LOGIC ─────────────────────────────────────────
+const nose=document.getElementById('gNose'), s2=document.getElementById('gS2'), inter=document.getElementById('gInter');
+const s1=document.getElementById('gS1'), nozzle=document.getElementById('gNozzle'), fins=document.getElementById('gFins');
+const exhaust=document.getElementById('rex'), spf=document.getElementById('spf');
 
-
-const nose=document.getElementById('gNose');
-const s2=document.getElementById('gS2');
-const inter=document.getElementById('gInter');
-const s1=document.getElementById('gS1');
-const nozzle=document.getElementById('gNozzle');
-const fins=document.getElementById('gFins');
-const exhaust=document.getElementById('rex');
-const spf=document.getElementById('spf');
-const callouts={
-  nose:  document.getElementById('cNose'),
-  s2:    document.getElementById('cS2'),
-  inter: document.getElementById('cInter'),
-  s1:    document.getElementById('cS1'),
-  eng:   document.getElementById('cEng'),
-};
+// The New Label Order
+const stageLabels = ["About", "Experiences", "Projects", "Skills", "Blastoff!"];
+const calloutText = document.querySelector('.r-callout-text');
 
 function lerp(a,b,t){return a+(b-a)*Math.max(0,Math.min(1,t))}
 function easeOut(t){return 1-Math.pow(1-Math.max(0,Math.min(1,t)),3)}
@@ -792,197 +778,111 @@ function onScroll(){
   const p=window.scrollY/Math.max(1,document.body.scrollHeight-window.innerHeight);
   spf.style.height=(p*100)+'%';
 
-  // Nose lifts early (0.08 → 0.32)
-  const np=easeOut((p-.08)/.25);
-  nose.style.transform=`translate(${lerp(0,10,np)}px,${lerp(0,-80,np)}px)`;
+  // --- Update Labels based on scroll percentage ---
+  let activeStage = 0;
+  if (p < 0.20) activeStage = 0;      // About
+  else if (p < 0.55) activeStage = 1; // Experiences (Longest section)
+  else if (p < 0.80) activeStage = 2; // Projects
+  else if (p < 0.96) activeStage = 3; // Skills
+  else activeStage = 4;               // Blastoff!
 
-  // Stage 2 lifts next (0.22 → 0.48)
-  const s2p=easeOut((p-.22)/.27);
-  s2.style.transform=`translate(${lerp(0,6,s2p)}px,${lerp(0,-52,s2p)}px)`;
+  if (calloutText) calloutText.innerText = stageLabels[activeStage];
 
-  // Interstage drifts (0.38 → 0.60)
-  const ip=easeOut((p-.38)/.23);
-  inter.style.transform=`translate(${lerp(0,3,ip)}px,${lerp(0,-24,ip)}px)`;
+  // --- Rocket Part Transitions (Adjusted for larger page) ---
+  const np = easeOut((p - 0.05) / 0.20); 
+  nose.style.transform = `translate(${lerp(0,10,np)}px,${lerp(0,-80,np)}px)`;
 
-  // Stage 1 settles down slightly (0.52 → 0.74)
-  const s1p=easeOut((p-.52)/.23);
-  s1.style.transform=`translate(${lerp(0,-5,s1p)}px,${lerp(0,22,s1p)}px)`;
+  const s2p = easeOut((p - 0.25) / 0.25); 
+  s2.style.transform = `translate(${lerp(0,6,s2p)}px,${lerp(0,-52,s2p)}px)`;
 
-  // Nozzle + fins drop (0.65 → 0.88)
-  const nzp=easeOut((p-.65)/.24);
-  nozzle.style.transform=`translate(0,${lerp(0,42,nzp)}px)`;
-  fins.style.transform=`translate(0,${lerp(0,46,nzp)}px) scaleX(${lerp(1,1.25,nzp)})`;
+  const ip = easeOut((p - 0.45) / 0.20);
+  inter.style.transform = `translate(${lerp(0,3,ip)}px,${lerp(0,-24,ip)}px)`;
 
-  // Exhaust fades
-  exhaust.style.opacity=String(lerp(1,0,Math.max(0,(p-.42)/.24)));
+  const s1p = easeOut((p - 0.65) / 0.20);
+  s1.style.transform = `translate(${lerp(0,-5,s1p)}px,${lerp(0,22,s1p)}px)`;
 
-  // Callouts
-  callouts.nose.classList.toggle('show',  np   > .4);
-  callouts.s2.classList.toggle('show',    s2p  > .4);
-  callouts.inter.classList.toggle('show', ip   > .4);
-  callouts.s1.classList.toggle('show',    s1p  > .4);
-  callouts.eng.classList.toggle('show',   nzp  > .4);
+  const nzp = easeOut((p - 0.80) / 0.15);
+  nozzle.style.transform = `translate(0,${lerp(0,42,nzp)}px)`;
+  fins.style.transform = `translate(0,${lerp(0,46,nzp)}px) scaleX(${lerp(1,1.25,nzp)})`;
+
+  exhaust.style.opacity = String(lerp(1,0,Math.max(0,(p-.42)/.24)));
 }
 
 window.addEventListener('scroll',onScroll,{passive:true});
-onScroll();
 
-// ─── TYPEWRITER ───────────────────────────────────────────
+// ─── BLASTOFF & LANDING ───────────────────────────────────
 (function(){
-  const line1El  = document.getElementById('tw-line1');
-  const line2El  = document.getElementById('tw-line2');
-  const cursorEl = document.getElementById('tw-cursor');
-  const line1 = 'AISHANI';
-  const line2 = 'GUPTA';
-  let i = 0, phase = 1;
+  const wrap = document.getElementById('rocket-svg-wrap'), col = document.getElementById('rocket-col');
+  wrap.classList.add('landing');
+  setTimeout(() => {
+    col.classList.add('landing-shake');
+    setTimeout(() => col.classList.remove('landing-shake'), 380);
+  }, 2500);
+  setTimeout(() => wrap.classList.remove('landing'), 3000);
 
-  function type() {
-    if (phase === 1) {
-      // typing line 1
-      if (i <= line1.length) {
-        line1El.textContent = line1.slice(0, i);
-        i++;
-        setTimeout(type, i === 1 ? 400 : 95);
-      } else {
-        phase = 2; i = 0;
-        setTimeout(type, 180);
-      }
+  let blasted = false;
+  window.addEventListener('scroll', () => {
+    if (blasted) return;
+    const p = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (p > 0.98 && landingComplete) {
+      blasted = true;
+      col.classList.add('shaking');
+      setTimeout(() => {
+        col.classList.remove('shaking');
+        wrap.classList.add('blasting');
+      }, 500);
+      setTimeout(() => { 
+        wrap.classList.remove('blasting'); 
+        blasted = false; 
+      }, 5000);
+    }
+  });
+})();
+
+// ─── TYPEWRITER (Same as before) ──────────────────────────
+(function(){
+  const line1El=document.getElementById('tw-line1'), line2El=document.getElementById('tw-line2'), cursorEl=document.getElementById('tw-cursor');
+  const line1='AISHANI', line2='GUPTA';
+  let i=0, phase=1;
+  function type(){
+    if(phase===1){
+      if(i<=line1.length){ line1El.textContent=line1.slice(0,i); i++; setTimeout(type,95); }
+      else { phase=2; i=0; setTimeout(type,180); }
     } else {
-      // typing line 2
-      if (i <= line2.length) {
-        line2El.textContent = line2.slice(0, i);
-        i++;
-        setTimeout(type, 110);
-      } else {
-        // done — keep cursor blinking for 2s then hide
-        setTimeout(() => { cursorEl.style.display = 'none'; }, 2000);
-      }
+      if(i<=line2.length){ line2El.textContent=line2.slice(0,i); i++; setTimeout(type,110); }
+      else { setTimeout(() => { cursorEl.style.display='none'; }, 2000); }
     }
   }
   setTimeout(type, 600);
 })();
 
-// ─── CURSOR PARTICLES ────────────────────────────────────
+// ─── CURSOR PARTICLES (Same as before) ────────────────────
 (function(){
-  const canvas = document.getElementById('particles');
-  const ctx    = canvas.getContext('2d');
-  let W, H;
-  const particles = [];
-  let mx = -999, my = -999;
-  let lastX = -999, lastY = -999;
-
-  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-  resize();
-  window.addEventListener('resize', resize);
-
+  const canvas=document.getElementById('particles'), ctx=canvas.getContext('2d');
+  let W,H, particles=[], mx=-999, my=-999, lastX=-999, lastY=-999;
+  function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
   window.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    // spawn particles on movement
-    const dist = Math.hypot(mx - lastX, my - lastY);
-    if (dist > 4) {
-      const count = Math.min(4, Math.floor(dist / 6));
-      for (let i = 0; i < count; i++) {
-        spawnParticle(mx, my);
-      }
-      lastX = mx; lastY = my;
+    mx=e.clientX; my=e.clientY;
+    if (Math.hypot(mx-lastX, my-lastY) > 4) {
+      for (let i=0; i<2; i++) spawn(mx, my);
+      lastX=mx; lastY=my;
     }
   });
-
-  function spawnParticle(x, y) {
-    const angle  = Math.random() * Math.PI * 2;
-    const speed  = Math.random() * 1.8 + 0.4;
-    const size   = Math.random() * 2.8 + 0.8;
-    // mix of maroon, orange-red, and white sparks
-    const palette = [
-      `rgba(200,25,43,`,
-      `rgba(232,67,42,`,
-      `rgba(255,160,100,`,
-      `rgba(255,220,180,`,
-      `rgba(255,255,255,`,
-    ];
-    const color = palette[Math.floor(Math.random() * palette.length)];
-    particles.push({
-      x, y,
-      vx: Math.cos(angle) * speed * 0.6 + (Math.random() - 0.5) * 0.8,
-      vy: Math.sin(angle) * speed - 0.6,  // slight upward bias
-      size,
-      color,
-      life: 1.0,
-      decay: Math.random() * 0.035 + 0.025,
-    });
+  function spawn(x,y){
+    particles.push({ x, y, vx:(Math.random()-0.5)*1.2, vy:Math.random()*1.5-0.8, size:Math.random()*2+1, life:1.0, decay:0.02 });
   }
-
   function loop(){
-    ctx.clearRect(0, 0, W, H);
-    for (let i = particles.length - 1; i >= 0; i--) {
-      const p = particles[i];
-      p.x  += p.vx;
-      p.y  += p.vy;
-      p.vy += 0.04; // gravity
-      p.life -= p.decay;
-      if (p.life <= 0) { particles.splice(i, 1); continue; }
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
-      ctx.fillStyle = p.color + (p.life * 0.9) + ')';
-      ctx.fill();
+    ctx.clearRect(0,0,W,H);
+    for(let i=particles.length-1; i>=0; i--){
+      const p=particles[i]; p.x+=p.vx; p.y+=p.vy; p.life-=p.decay;
+      if(p.life<=0){ particles.splice(i,1); continue; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.size*p.life,0,6.28);
+      ctx.fillStyle=`rgba(200,25,43,${p.life})`; ctx.fill();
     }
     requestAnimationFrame(loop);
   }
   loop();
-})();
-
-// ─── LANDING ON PAGE LOAD ────────────────────────────────
-(function(){
-  const wrap = document.getElementById('rocket-svg-wrap');
-  const col  = document.getElementById('rocket-col');
-
-  // kick off landing immediately
-  wrap.classList.add('landing');
-
-  // screen shake at touchdown (~90% through 2.4s anim + 0.3s delay = ~2.5s)
-  setTimeout(() => {
-    col.classList.add('landing-shake');
-    setTimeout(() => col.classList.remove('landing-shake'), 380);
-  }, 2500);
-
-  // remove landing class once settled so idle exhaust takes over
-  setTimeout(() => {
-    wrap.classList.remove('landing');
-  }, 3000);
-})();
-(function(){
-  const wrap   = document.getElementById('rocket-svg-wrap');
-  const col    = document.getElementById('rocket-col');
-  let blasted  = false;
-
-  function checkBottom() {
-    if (blasted) return;
-    const scrolled  = window.scrollY;
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    // trigger when within 40px of the very bottom
-    if (maxScroll - scrolled < 40) {
-      if (!landingComplete) return;
-      blasted = true;
-      // 1. brief shake to signal ignition
-      col.classList.add('shaking');
-      setTimeout(() => col.classList.remove('shaking'), 420);
-      // 2. half-second delay then launch
-      setTimeout(() => {
-        wrap.classList.add('blasting');
-      }, 500);
-      // 3. after rocket is gone, reset everything for next time
-      setTimeout(() => {
-        wrap.classList.remove('blasting');
-        // snap all segment transforms back
-        ['gNose','gS2','gInter','gS1','gNozzle','gFins'].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.style.transform = '';
-        });
-        blasted = false;
-      }, 5000);
-    }
-  }
-  window.addEventListener('scroll', checkBottom, { passive: true });
 })();
 </script>
 </body>
