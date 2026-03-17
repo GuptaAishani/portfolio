@@ -555,50 +555,35 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;align-ite
   <div id="rocket-svg-wrap">
     <svg viewBox="0 0 280 760" xmlns="http://www.w3.org/2000/svg">
       <g transform="translate(0,20)">
-        <g id="rex" style="transform-origin:140px 676px">
-          </g>
-
         <g class="r-fins" id="gFins" style="transform-origin:140px 660px">
-           <path d="M95 640 L56 698 L95 680Z" fill="url(#bG)" stroke="rgba(200,25,43,.4)" stroke-width="1"/>
-           <path d="M185 640 L224 698 L185 680Z" fill="url(#bG)" stroke="rgba(200,25,43,.4)" stroke-width="1"/>
-        </g>
-
-        <g class="r-lower" id="gNozzle">
-          <path d="M105 676 L95 676 L74 728 L206 728 L185 676 L175 676Z" fill="url(#eG)" stroke="rgba(200,25,43,.25)" stroke-width=".9"/>
+          <path d="M95 640 L56 698 L95 680Z" fill="url(#bG)" stroke="rgba(200,25,43,.4)" stroke-width="1"/>
+          <path d="M185 640 L224 698 L185 680Z" fill="url(#bG)" stroke="rgba(200,25,43,.4)" stroke-width="1"/>
         </g>
 
         <g class="r-lower" id="gS1">
           <rect x="95" y="480" width="90" height="196" fill="url(#bG)" stroke="rgba(200,25,43,.22)" stroke-width=".9"/>
-          <text id="txtS1" x="140" y="553" text-anchor="middle" fill="rgba(220,60,70,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace" letter-spacing="2">EXPERIENCE</text>
+          <text x="140" y="553" text-anchor="middle" fill="rgba(220,60,70,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace" letter-spacing="2">EXPERIENCE</text>
         </g>
 
         <g class="r-inter" id="gInter">
           <rect x="95" y="442" width="90" height="40" fill="rgba(16,5,8,.95)" stroke="rgba(200,25,43,.35)" stroke-width=".9"/>
-          <text id="txtInter" x="140" y="467" text-anchor="middle" fill="rgba(220,60,70,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace" letter-spacing="2">SKILLS</text>
+          <text x="140" y="467" text-anchor="middle" fill="rgba(220,60,70,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace" letter-spacing="2">SKILLS</text>
         </g>
 
         <g class="r-upper" id="gS2">
           <rect x="95" y="276" width="90" height="168" fill="url(#bG)" stroke="rgba(200,25,43,.2)" stroke-width=".9"/>
-          <text id="txtS2" x="140" y="385" text-anchor="middle" fill="rgba(220,60,70,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace" letter-spacing="2">PROJECTS</text>
+          <text x="140" y="385" text-anchor="middle" fill="rgba(220,60,70,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace" letter-spacing="2">PROJECTS</text>
         </g>
 
         <g class="r-nose" id="gNose">
           <path d="M140 62 Q174 96 182 148 L182 276 L98 276 L98 148 Q106 96 140 62Z" fill="url(#nG)" stroke="rgba(200,25,43,.3)" stroke-width=".9"/>
-          <text id="txtNose" x="140" y="192" text-anchor="middle" fill="rgba(220,60,70,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace" letter-spacing="2">ABOUT</text>
+          <text x="140" y="192" text-anchor="middle" fill="rgba(220,60,70,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace" letter-spacing="2">ABOUT</text>
         </g>
 
-        <g class="r-callout" id="cNose">
-          <text id="cTxtNose" x="216" y="141" fill="rgba(220,60,70,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace" letter-spacing="1">ABOUT</text>
-        </g>
-        <g class="r-callout" id="cS2">
-          <text id="cTxtS2" x="216" y="365" fill="rgba(232,100,50,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace" letter-spacing="1">PROJECTS</text>
-        </g>
-        <g class="r-callout" id="cInter">
-          <text id="cTxtInter" x="216" y="467" fill="rgba(220,60,70,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace" letter-spacing="1">SKILLS</text>
-        </g>
-        <g class="r-callout" id="cS1">
-          <text id="cTxtS1" x="216" y="585" fill="rgba(255,160,100,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace" letter-spacing="1">EXPERIENCE</text>
-        </g>
+        <g class="r-callout" id="cNose"><text x="216" y="141" fill="rgba(220,60,70,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace">ABOUT</text></g>
+        <g class="r-callout" id="cS2"><text x="216" y="365" fill="rgba(232,100,50,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace">EXPERIENCE</text></g>
+        <g class="r-callout" id="cInter"><text x="216" y="467" fill="rgba(220,60,70,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace">PROJECTS</text></g>
+        <g class="r-callout" id="cS1"><text x="216" y="585" fill="rgba(255,160,100,1)" font-size="11" font-weight="700" font-family="'IBM Plex Mono',monospace">SKILLS</text></g>
       </g>
     </svg>
   </div>
@@ -643,29 +628,11 @@ document.querySelectorAll('.skill-bar').forEach(b=>sbo.observe(b));
 function onScroll(){
   if (!landingComplete) return;
   const p = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);
+  
+  // Progress bar
   spf.style.height = (p * 100) + '%';
 
-  // --- Dynamic Label Logic ---
-  let mainLabels = ["ABOUT", "PROJECTS", "SKILLS", "EXPERIENCE"];
-  
-  // If we are near the bottom, switch to "Launch Prep" mode
-  if (p > 0.95) {
-    mainLabels = ["MISSION", "AVIONICS", "HARDWARE", "BOOSTER"];
-  }
-
-  // Update labels on the Rocket Body
-  document.getElementById('txtNose').textContent  = mainLabels[0];
-  document.getElementById('txtS2').textContent    = mainLabels[1];
-  document.getElementById('txtInter').textContent = mainLabels[2];
-  document.getElementById('txtS1').textContent    = mainLabels[3];
-
-  // Update labels on the Callouts
-  document.getElementById('cTxtNose').textContent  = mainLabels[0];
-  document.getElementById('cTxtS2').textContent    = mainLabels[1];
-  document.getElementById('cTxtInter').textContent = mainLabels[2];
-  document.getElementById('cTxtS1').textContent    = mainLabels[3];
-
-  // --- Physical Movement (Keep your existing transitions) ---
+  // Movement Logic
   const np = easeOut((p - 0.05) / 0.20); 
   nose.style.transform = `translate(${lerp(0,10,np)}px,${lerp(0,-80,np)}px)`;
   
@@ -684,7 +651,6 @@ function onScroll(){
 
   exhaust.style.opacity = String(lerp(1, 0, (p - 0.1) / 0.2));
 }
-
 window.addEventListener('scroll',onScroll,{passive:true});
 
 // ─── BLASTOFF & LANDING ───────────────────────────────────
